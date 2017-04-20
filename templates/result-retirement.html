@@ -1,0 +1,4090 @@
+{% extends "base.html" %}
+{% load staticfiles i18n %}
+{% block extra_head %}
+{{ block.super }}
+{% endblock %}
+
+{% block block_content %}
+{% if user %}
+
+
+<div class="main">
+    <!--BASE_HOME_BLOCK_TOP-->
+    <style>
+        .main-form {
+            background: #eeeeef;
+            width: 100%;
+            position: relative;
+            padding-bottom: 30px;
+            margin-bottom: 100px;
+        }
+
+        #step-1 .part-wrapper {
+            margin-top: 30px;
+            background: white;
+            padding-bottom: 80px;
+        }
+
+        .main .header {
+            font-size: 2.22rem;
+            font-family: 'Signika', sans-serif;
+            text-align: center;
+            padding-top: 10px;
+        }
+
+        #step-1 .step {
+            padding-top: 20px;
+            padding-right: 0;
+        }
+
+        #step-1 .step .btn {
+            color: #ffffff;
+            background: #ff8c24;
+            cursor: default;
+        }
+
+        #step-1 .title {
+            font-size: 2.22rem;
+            font-weight: bold;
+            font-family: 'Signika', sans-serif;
+        }
+
+        #step-1 .part-wrapper .part {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        #step-1 .input-wraper {
+            /*border-bottom: 5px solid #ff8c24;*/
+            margin-top: 50px;
+        }
+
+        #step-1 .text-input {
+            font-size: 2.22rem;
+            border: none;
+            text-align: center;
+            color: #ff8c24;
+            padding: 10px 5px 10px 5px;
+            /*margin-left: 20px;*/
+            background-color: rgba(0, 0, 0, 0);
+            width: 100%;
+        }
+
+        #step-1 .text-input:focus {
+            outline: none;
+        }
+
+        #step-1 .input-wraper .icon {
+            font-size: 2.22rem;
+            color: #ff8c24;
+            line-height: 75px;
+        }
+
+        #step-1 .input-wraper .collapse-icon {
+            right: -60px;
+            top: 5px;
+        }
+
+        #step-1 .input-wraper hr {
+            border-top: 5px solid #ff8c24;
+            margin: 0;
+        }
+
+        #step-1 .btn-save {
+            max-width: 250px;
+            max-height: 50px;
+            margin-top: 30px;
+            color: #ffffff;
+            background: #ff8c24;
+            border-color: #ff8c24;
+            font-weight: bold;
+            font-size: 1.22rem;
+            z-index: 1;
+        }
+
+        #step-1 .btn-save:hover {
+            color: #ffffff;
+            background: #cccccc;
+            border-color: #ff8c24;
+        }
+
+        #step-1 .wiz {
+            position: absolute;
+            bottom: -40px;
+        }
+
+        #step-1 .sub-item {
+            margin-top: 30px;
+        }
+
+        #step-1 .name {
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        #step-1 .input {
+            color: #ff8c24;
+        }
+
+        #step-1 .input input {
+            font-size: 1.11rem;
+            border: 3px solid #ff8c24;
+            height: 40px;
+            margin-top: 10px;
+        }
+
+        #step-1 .plus {
+            font-size: 2.22rem;
+            font-weight: bold;
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        #step-1 .dollar {
+            margin-top: 12px;
+        }
+
+        #step-1 .dollar {
+            font-size: 1.44rem;
+        }
+
+        #step-1 .x12 {
+            font-size: 1.11rem;
+            margin-top: 14px;
+        }
+
+        #step-1 .padding-0 {
+            padding: 0;
+        }
+
+        #step-1 .icon {
+            background: none;
+        }
+
+        @media (min-width: 990px) {
+            #step-1 .max-width-150 {
+                max-width: 150px;
+            }
+
+            #step-1 .dollar {
+                max-width: 30px;
+            }
+
+            #step-1 .max-width-120 {
+                max-width: 120px;
+            }
+
+            #step-1 .margin-plus {
+                margin-top: 40px;
+            }
+
+            #step-1 .min-width-290 {
+                min-width: 290px;
+            }
+
+            #step-1 .margin-top-20 {
+                margin-top: 20px;
+            }
+
+            #step-1 .margin-top-50 {
+                margin-top: 50px;
+            }
+
+            #step-1 .total-amount {
+                min-width: 320px;
+            }
+        }
+
+        @media screen and (max-width: 990px) {
+            #step-1 .part-wrapper {
+                padding-bottom: 180px;
+            }
+
+            #step-1 .btn-save-wrapper {
+                float: none;
+                margin: 0 auto;
+            }
+        }
+
+        @media only screen and (max-width: 600px) {
+            #step-1 .step {
+                padding-top: 12px;;
+            }
+
+            #step-1 .name, #step-1 .text-input {
+                font-size: 1.72rem;
+                margin: 0;
+                line-height: 55px;
+            }
+
+            #step-1 .x12, #step-1 .dollar {
+                margin-top: 18px;
+            }
+
+            #step-1 .input-wraper {
+                margin-top: 15px;
+            }
+
+            #step-1 .input input {
+                font-size: 1.44rem;
+            }
+
+            #step-1 .plus {
+                margin-top: 96px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            #step-1 .step {
+                padding-right: 9px;
+            }
+
+            #step-1 .input-wraper .collapse-icon {
+                right: -30px;
+            }
+
+            #step-1 .title {
+                text-align: left;
+            }
+
+            #step-1 .part-wrapper .part {
+                margin-top: 20px;
+            }
+
+            #step-1 .sub-item {
+                margin-top: 0;
+            }
+
+            #step-1 .plus {
+                margin-top: 20px;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 990px) {
+            #step-1 .margin-top-0 {
+                margin-top: 0;
+            }
+
+            #step-1 .plus {
+                margin-top: 10px;
+            }
+
+            #step-1 .input-wraper .icon {
+                line-height: 65px;
+            }
+
+            #step-1 .total-amount {
+                min-width: 230px;
+            }
+
+            #step-1 .dollar, .x12 {
+                margin-top: 18px;
+            }
+
+            #step-1 .step {
+                padding-right: 9px;
+            }
+        }
+
+        input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+
+        #step-1 #top-link-block, .collapse-icon-click {
+            cursor: pointer;
+        }
+    </style>
+
+    <!--Step 1 Income and Expense-->
+    <div class="main main-form" id="step-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-3 col-md-6 col-xs-10 header">Income and Expense</div>
+                <div class="col-xs-2 step col-md-3 text-right"><span class="btn btn-default">1/2</span></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row part-wrapper">
+                <div class="part col-xs-12">
+                    <div class="row">
+                        <div class="title col-xs-12">My current Annual Income is</div>
+                        <div class="content col-xs-12">
+                            <div class="input-wraper col-sm-offset-3 col-sm-6 col-xs-11">
+
+                                <div class="col-sm-3 col-xs-2 text-right icon">$</div>
+                                <div class="col-sm-7 col-xs-8">
+                                    <input type="text" class="text-input total-amount" id="annual-income"
+                                           placeholder="enter an amount" disabled="disabled">
+                                </div>
+                                <div class="text-right icon collapse-icon">
+                                    <i class="fa fa-caret-down collapse-icon-click" aria-hidden="true"
+                                       data-collapse="#sub-income"></i>
+                                </div>
+                                <div class="clearfix"></div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sub col-xs-12" id="sub-income">
+                        <div class="col-sm-offset-3 col-sm-6 col-xs-offset-1 col-xs-11 sub-item text-left">
+                            <div class="col-md-5 padding-0 col-xs-12">
+                                <div class="name col-md-12 padding-0">Employment Income</div>
+                                <div class="input col-md-12 padding-0">
+                                    <span class="padding-0 col-xs-1 dollar col-md-2">$</span>
+                                    <input type="number" class="col-xs-9 col-md-8" id="employment-income">
+                                </div>
+                            </div>
+                            <div class="col-md-2 plus col-xs-11">+
+
+                            </div>
+                            <div class="col-md-5 padding-0 col-xs-12">
+                                <div class="name col-md-12 padding-0">Other Income</div>
+                                <div class="input col-md-12 padding-0">
+                                    <span class="padding-0 col-xs-1 dollar col-md-2">$</span>
+                                    <input type="number" class="col-xs-9 col-md-8" id="other-income">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="part col-xs-12">
+                    <div class="row">
+                        <div class="title col-xs-12">My Annual Expense is</div>
+                        <div class="content col-xs-12">
+                            <div class="input-wraper col-sm-offset-3 col-sm-6 col-xs-11">
+                                <div class="col-sm-3 col-xs-2 text-right icon">$</div>
+                                <div class="col-sm-7 col-xs-8">
+                                    <input type="text" class="text-input total-amount" placeholder="enter an amount"
+                                           id="annual-expense" disabled="disabled">
+                                </div>
+                                <div class="text-right icon collapse-icon"><i
+                                        class="fa fa-caret-down collapse-icon-click" aria-hidden="true"
+                                        data-collapse="#sub-expense"></i></div>
+                                <div class="clearfix"></div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sub col-xs-12" id="sub-expense">
+                        <div class="row">
+                            <div class="col-sm-offset-3 col-sm-6 col-xs-offset-1 col-xs-11 sub-item text-left">
+                                <div class="col-md-5 padding-0 col-xs-12">
+                                    <div class="name col-md-12 padding-0">Rent or Mortgage (Monthly)</div>
+                                    <div class="input col-md-12 padding-0">
+                                        <span class="padding-0 col-xs-1 dollar col-md-2">$</span>
+                                        <input type="number" class="col-xs-9 col-md-8 max-width-120 monthly-expense"
+                                               id="rent-monthly">
+                                        <span class="col-xs-2 col-md-2 x12">x12</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 plus margin-plus col-xs-11">+
+
+                                </div>
+                                <div class="col-md-5 padding-0 col-xs-12">
+                                    <div class="name col-md-12 padding-0">Transportation (Monthly)</div>
+                                    <div class="input col-md-12 padding-0">
+                                        <span class="padding-0 col-xs-1 dollar col-md-2">$</span>
+                                        <input type="number" class="col-xs-9 col-md-8 max-width-120 monthly-expense"
+                                               id="transportation-monthly">
+                                        <span class="col-xs-2 x12">x12</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-1 col-md-1 col-sm-offset-2 plus margin-top-50 hidden-sm">+</div>
+                            <div class="col-sm-12 visible-sm">
+                                <div class="col-sm-offset-3 col-sm-6 col-xs-offset-1 col-xs-11">
+                                    <div class="col-md-2 plus col-xs-11">+</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-sm-offset-3 col-md-offset-0 col-xs-offset-1 col-xs-11 sub-item text-left margin-top-0">
+                                <div class="col-md-5 padding-0 col-xs-12">
+                                    <div class="name col-md-12 padding-0">Household (Monthly)</div>
+                                    <div class="input col-md-12 padding-0">
+                                        <span class="padding-0 col-xs-1 dollar col-md-2">$</span>
+                                        <input type="number" class="col-xs-9 col-md-8 max-width-120 monthly-expense"
+                                               id="household-monthly">
+                                        <span class="col-xs-2 col-md-2 x12">x12</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 plus margin-top-20 col-xs-11">+
+
+                                </div>
+                                <div class="col-md-5 padding-0 col-xs-12">
+                                    <div class="name col-md-12 padding-0 min-width-290">Dependants Support (Monthly)
+                                    </div>
+                                    <div class="input col-md-12 padding-0">
+                                        <span class="padding-0 col-xs-1 dollar col-md-2">$</span>
+                                        <input type="number" class="col-xs-9 col-md-8 max-width-120 monthly-expense"
+                                               id="dependants-monthly">
+                                        <span class="col-xs-2 x12">x12</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-1 col-md-1 col-sm-offset-2 plus margin-top-50 hidden-sm">+</div>
+                            <div class="col-sm-12 visible-sm">
+                                <div class="col-sm-offset-3 col-sm-6 col-xs-offset-1 col-xs-11">
+                                    <div class="col-md-2 plus col-xs-11">+</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-sm-offset-3 col-md-offset-0 col-xs-offset-1 col-xs-11 sub-item text-left margin-top-0">
+                                <div class="col-md-5 padding-0 col-xs-12">
+                                    <div class="name col-md-12 padding-0">Income Tax Annually</div>
+                                    <div class="input col-md-12 padding-0">
+                                        <span class="padding-0 col-xs-1 dollar col-md-2">$</span>
+                                        <input type="number" class="col-xs-9 col-md-8 annual-expense" id="tax-annual">
+                                    </div>
+                                </div>
+                                <div class="col-md-2 plus margin-top-20 col-xs-11">+
+
+                                </div>
+                                <div class="col-md-5 padding-0 col-xs-12">
+                                    <div class="name col-md-12 padding-0 min-width-290">Insurance premiums Annually
+                                    </div>
+                                    <div class="input col-md-12 padding-0">
+                                        <span class="padding-0 col-xs-1 dollar col-md-2">$</span>
+                                        <input type="number" class="col-xs-9 col-md-8 annual-expense"
+                                               id="insurance-annual">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-1 col-md-1 col-sm-offset-2 plus margin-top-50 hidden-sm">+</div>
+                            <div class="col-sm-12 visible-sm">
+                                <div class="col-sm-offset-3 col-sm-6 col-xs-offset-1 col-xs-11">
+                                    <div class="col-md-2 plus col-xs-11">+</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-sm-offset-3 col-md-offset-0 col-xs-offset-1 col-xs-11 sub-item text-left margin-top-0">
+                                <div class="col-md-5 padding-0 col-xs-12">
+                                    <div class="name col-md-12 padding-0 min-width-290">Other expenses Annually</div>
+                                    <div class="input col-md-12 padding-0">
+                                        <span class="padding-0 col-xs-1 dollar col-md-2">$</span>
+                                        <input type="number" class="col-xs-9 col-md-8 annual-expense" id="other-annual">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-xs-offset-6 col-xs-6">
+                    <a>
+                        <button class="col-xs-12 pull-right btn btn-default btn-save" id="btn-submit">Savings & Assets
+                        </button>
+                    </a>
+                </div>
+            </div>
+            <div class="wiz">
+                <img src="{% static 'gfxs/wz/wis-1.png' %}">
+            </div>
+        </div>
+    </div>
+
+    <!--Step 2 Saving & Assets-->
+    <style>
+        .main-form {
+            background: #eeeeef;
+            width: 100%;
+            position: relative;
+            padding-bottom: 30px;
+            margin-bottom: 100px;
+        }
+
+        #step-2 .part-wrapper {
+            margin-top: 30px;
+            background: white;
+            padding-bottom: 80px;
+            padding-top: 40px;
+        }
+
+        #step-2 .step {
+            padding-top: 20px;
+        }
+
+        #step-2 .back {
+            padding-top: 25px;
+            font-weight: bold;
+        }
+
+        #step-2 .step .btn {
+            color: #ffffff;
+            background: #ff8c24;
+            cursor: default;
+        }
+
+        #step-2 .btn-magic {
+            max-width: 250px;
+            max-height: 50px;
+            margin-top: 30px;
+            color: #ffffff;
+            background: #ff8c24;
+            border-color: #ff8c24;
+            font-weight: bold;
+            font-size: 1.22rem;
+        }
+
+        #step-2 .btn-magic:hover {
+            color: #ffffff;
+            background: #cccccc;
+            border-color: #ff8c24;
+        }
+
+        #step-2 .btn-magic-wrapper {
+            float: none;
+            margin: 0 auto;
+        }
+
+        #step-2 .wiz {
+            position: absolute;
+            bottom: -190px;
+            right: 0;
+        }
+
+        #step-2 .title {
+            font-size: 2.22rem;
+            font-weight: bold;
+            font-family: 'Signika', sans-serif;
+            text-align: right;
+        }
+
+        #step-2 .sub-item {
+            margin-top: 20px;
+        }
+
+        #step-2 .name {
+            font-weight: bold;
+            font-size: 1.11rem;
+        }
+
+        #step-2 .name-3 {
+            min-height: 50px;
+        }
+
+        #step-2 input {
+            font-size: 1.22rem;
+            border: 3px solid #ff8c24;
+            height: 40px;
+            margin-top: 10px;
+            color: #ff8c24
+        }
+
+        #step-2 .plus {
+            font-size: 2.22rem;
+            font-weight: bold;
+            margin-top: 27px;
+        }
+
+        #step-2 .dollar {
+            margin-top: 15px;
+        }
+
+        #step-2 .downgrading,
+        #step-2 .downgrading-x {
+            font-weight: bold;
+            font-size: 1.22rem;
+        }
+
+        #step-2 .downgrading-x {
+            color: #ff8c24;
+            line-height: 50px;
+        }
+
+        #step-2 .downgrading-x i {
+            font-size: 1.22rem;
+            padding-left: 45px;
+        }
+
+        #step-2 .property {
+            font-size: 1.22rem;
+            color: #ff8c24;
+            line-height: 33px;
+        }
+
+        #step-2 .property i {
+            font-size: 2.22rem;
+        }
+
+        #step-2 .text-input:focus {
+            outline: none;
+        }
+
+        #step-2 .input-wraper {
+            /*border-bottom: 5px solid #ff8c24;*/
+            margin-top: 10px;
+        }
+
+        #step-2 .sub-item input {
+            padding-left: 25px;
+            color: #ff8c24;
+        }
+
+        #step-2 .inner-addon {
+            position: relative;
+            padding: 0;
+        }
+
+        #step-2 .inner-addon i {
+            position: absolute;
+            padding: 10px;
+            pointer-events: none;
+            padding-top: 22px;
+            color: #ff8c24;
+            font-size: 18px;
+        }
+
+        #step-2 .input-background i {
+            font-size: 2.22rem;
+        }
+
+        #step-2 .left-addon i {
+            left: 0px;
+        }
+
+        #step-2 .right-addon i {
+            right: 0px;
+        }
+
+        #step-2 .left-addon input {
+            padding-left: 30px;
+        }
+
+        #step-2 .right-addon input {
+            padding-right: 30px;
+        }
+
+        #step-2 .maturity.input-group-addon {
+            padding: inherit;
+            font-size: 20px;
+            font-weight: normal;
+            line-height: 1;
+            color: #ff8c24;
+            text-align: center;
+            background-color: #ffffff;
+            border: 3px solid #ff8c24 !important;
+            border-radius: 0;
+            width: 100%;
+            white-space: inherit;
+            vertical-align: inherit;
+        }
+
+        #step-2 .text-input {
+            font-size: 2.22rem;
+            border: none;
+            color: #ff8c24;
+            padding: 10px 50px 30px 5px;
+            background-color: rgba(0, 0, 0, 0);
+            min-height: 60px;
+            text-align: center;
+        }
+
+        @media only screen and (max-width: 600px) {
+            #step-2 .last-sub {
+                margin-bottom: 150px;
+            }
+
+            #step-2 .title {
+                text-align: center;
+            }
+
+            #step-2 .step {
+                padding-top: 25px;
+            }
+
+            #step-2 .back {
+                padding-top: 25px;
+            }
+
+            #step-2 .main-form .header {
+                line-height: 65px;
+            }
+
+            #step-2 .name-3 {
+                min-height: 30px;
+            }
+
+            #step-2 .property,
+            #step-2 .name,
+            #step-2 .text-input {
+                font-size: 1.72rem;
+                margin: 0;
+                line-height: 50px;
+            }
+
+            #step-2 .text-input {
+                padding: 0;
+            }
+        }
+
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+
+        #step-2 .min-width-220 {
+            min-width: 220px;
+        }
+
+        #step-2 .sub-container {
+            padding: 15px 40px;
+        }
+
+        #step-2 .input-wraper input {
+            border-bottom: 5px solid #ff8c24;
+        }
+
+        #step-2 .min-width-180 {
+            min-width: 180px;
+        }
+
+        #step-2 .margin-top-30 {
+            margin-top: 30px;
+        }
+
+        #step-2 .margin-top-10 {
+            margin-top: 10px;
+        }
+
+        #step-2 .margin-bottom-40 {
+            margin-bottom: 40px;
+        }
+
+        #step-2 .cursor-pointer {
+            cursor: pointer;
+        }
+
+        @media (max-width: 767px) {
+            #step-2 .plus {
+                text-align: center;
+            }
+
+            #step-2 .xs-margin-bottom-40 {
+                margin-bottom: 40px;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 990px) {
+            #step-2 .min-width-180 {
+                min-width: 100px;
+            }
+
+            #step-2 .sm-margin-top-20 {
+                margin-top: 20px;
+            }
+
+            #step-2 .name-3 {
+                min-height: 60px;
+            }
+
+            #step-2 .sm-min-width-200 {
+                min-width: 200px !important;
+            }
+        }
+
+        @media (min-width: 990px) {
+            #step-2 .min-width-180 {
+                min-width: 180px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            #step-2 .max-width-60 {
+                max-width: 60px;
+            }
+        }
+
+        #step-2 .icon-collapse-click, #step-2 #top-link-block, #step-2 .back {
+            pointer-events: auto !important;
+            cursor: pointer;
+        }
+
+        #step-2 select {
+            font-size: 1.22rem;
+            border: 3px solid #ff8c24;
+            height: 40px;
+            margin-top: 10px;
+            color: #ff8c24;
+            width: 100%;
+        }
+
+        #step-2 .downgrading-radio {
+            margin-top: 15px;
+        }
+
+        #step-2 .downgrading-radio input[type="radio"] + span:before {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin: -1px 4px -1px -0px;
+            vertical-align: middle;
+            border: solid 2px #03256c;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        #step-2 .downgrading-radio input[type="radio"]:checked + span:after {
+            content: '';
+            display: inline-block;
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            left: 25px;
+            top: 9px;
+            border-radius: 50%;
+            background-color: #03256c;
+        }
+
+        #step-2 .downgrading-radio input[type="radio"] {
+            display: none;
+        }
+
+        #step-2 .downgrading-radio span {
+            color: #03256c;
+            font-weight: bold;
+        }
+
+        #step-2 .downgrading-dropdown ul {
+            list-style: none;
+        }
+
+        #step-2 .downgrading-dropdown .downgrading-dropdown-option {
+            border: 1px solid #d5d5d5;
+            text-align: left;
+            padding-left: 20px;
+            width: 180px;
+            font-weight: bold;
+            box-shadow: 1px 1px 2px #888888;
+            font-size: 1.22rem;
+            cursor: pointer;
+        }
+
+        #step-2 .downgrading-dropdown .downgrading-dropdown-option.cancel {
+            color: #dddddf
+        }
+
+        #step-2 .downgrading-dropdown .downgrading-dropdown-option:hover {
+            color: #ff8c24;
+        }
+
+        #step-2 .downgrading-cancel {
+            cursor: pointer;
+        }
+    </style>
+    <div class="main main-form hidden" id="step-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-4 back text-left"><a class="back-step-1"><i class="fa fa-caret-left" aria-hidden="true"></i>
+                    Edit Income & Expenses</a></div>
+                <div class="col-xs-4 header">Saving & Assets</div>
+                <div class="col-xs-4 step text-right"><span class="btn btn-default">2/2</span></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="part-wrapper">
+                <div class="row">
+                    <div class="col-sm-4 title text-left">Savings</div>
+                    <div class="col-sm-8">
+                        <div class="sub-container">
+                            <div class="row xs-margin-bottom-40">
+                                <div class="col-sm-3">
+                                    <div class="name min-width-220">Cash in Bank</div>
+                                    <div class="inner-addon left-addon col-xs-12">
+                                        <input type="number" class="col-xs-12" id="cash"/>
+                                        <i class="fa fa-usd" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                <div class="clearfix  visible-xs"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-4 title text-left">Property</div>
+                    <div class="col-sm-8">
+                        <div class="sub-container">
+                            <div class="sub-property-container">
+                                <div class="sub-property-group-0">
+                                    <div class="row">
+                                        <div class="input-wraper col-xs-12">
+                                            <div class="input-background col-xs-12 inner-addon right-addon">
+                                                <input type="text" class="text-input col-xs-10">
+                                                <i class="fa fa-caret-down icon-collapse-click col-xs-2"
+                                                   aria-hidden="true" data-class=".sub-property"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row margin-top-30 sub-property">
+                                        <div class="col-sm-3">
+                                            <div class="name name-3">Your age at purchase</div>
+                                            <input type="number" class="col-xs-12 purchase-age"/>
+                                        </div>
+                                        <div class="clearfix  visible-xs"></div>
+                                        <div class="col-sm-3 col-sm-offset-1">
+                                            <div class="name min-width-180">Property Type (Private, HDB etc)</div>
+                                            <div class="inner-addon right-addon col-xs-12">
+                                                <select class="property-type">
+                                                    <option value="Private">Private</option>
+                                                    <option value="HDB">HDB</option>
+                                                    <option value="Other">Other</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix  visible-xs"></div>
+                                        <div class="col-sm-3 col-sm-offset-1">
+                                            <div class="name name-3">Purchase price</div>
+                                            <div class="inner-addon left-addon col-xs-12">
+                                                <input type="number" class="col-xs-12 purchase-price"/>
+                                                <i class="fa fa-usd" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row margin-top-10 sub-property">
+                                        <div class="col-sm-3">
+                                            <div class="name name-3 max-width-60">Loan amount</div>
+                                            <div class="inner-addon left-addon col-xs-12">
+                                                <input type="number" class="col-xs-12 loan-amount"/>
+                                                <i class="fa fa-usd" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix  visible-xs"></div>
+                                        <div class="col-sm-3 col-sm-offset-1">
+                                            <div class="name min-width-180 name-3">Monthly Loan Payment</div>
+                                            <div class="inner-addon left-addon col-xs-12">
+                                                <input type="number" class="col-xs-12 monthly-loan-payment"/>
+                                                <i class="fa fa-usd" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix  visible-xs"></div>
+                                        <div class="col-sm-3 col-sm-offset-1">
+                                            <div class="name name-3">Mortgage Interest Rate</div>
+                                            <div class="inner-addon right-addon col-xs-12">
+                                                <input type="number" class="col-xs-12 mortgage-rate"/>
+                                                <i class="fa fa-percent" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row margin-top-30 sub-property">
+                                        <div class="col-sm-6 downgrading">
+                                            Consider downgrading property for retirement?
+                                        </div>
+                                        <div class="col-sm-6 downgrading-radio">
+                                            <label class="radio-inline padding-0">
+                                                <input type="radio" name="downgrade" class="downgrade-option radio-no" checked=""><span>No</span>
+                                            </label>
+                                            <label class="radio-inline padding-0 margin-right-30">
+                                                <input type="radio" name="downgrade" class="downgrade-option radio-yes"><span>Yes</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6 downgrading-dropdown" style="display: none;">
+                                            <ul>
+                                                <li class="downgrading-dropdown-option">3 Room HDB</li>
+                                                <li class="downgrading-dropdown-option">4 Room HDB</li>
+                                                <li class="downgrading-dropdown-option">5 Room HDB</li>
+                                                <li class="downgrading-dropdown-option">Studio</li>
+                                                <li class="downgrading-dropdown-option">Others</li>
+                                                <li class="downgrading-dropdown-option cancel">Cancel</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-6 downgrading-result downgrading-x" style="display: none;">
+                                            <span class="downgrading-selected"></span>
+                                            <i class="fa fa-times-circle-o downgrading-cancel" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<div class="row margin-top-30 margin-bottom-40 cursor-pointer" id="add-property">-->
+                                <!--<div class="col-xs-1 property text-right"><i class="fa fa-plus-circle"-->
+                                                                             <!--aria-hidden="true"></i></div>-->
+                                <!--<div class="col-xs-11 property text-left">Add another property</div>-->
+                            <!--</div>-->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-4 title text-left">Retirement Products</div>
+                    <div class="col-sm-8">
+                        <div class="sub-container">
+                            <div class="sub-retirement-container">
+                                <div class="sub-retirement-group-0">
+                                    <div class="row">
+                                        <div class="input-wraper col-xs-12">
+                                            <div class="input-background col-xs-12 inner-addon right-addon">
+                                                <input type="text" class="text-input col-xs-10">
+                                                <i class="fa fa-caret-down col-xs-2 icon-collapse-click"
+                                                   aria-hidden="true" data-class=".sub-retirement"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row margin-top-30 sub-retirement">
+                                        <div class="col-sm-4">
+                                            <div class="name">Maturity date</div>
+
+                                            <div class="input-group date datetime-picker maturity-date inner-addon right-addon col-xs-12">
+                                                <input type="text" class="col-md-12 input-group-addon maturity"/>
+                                                <i class="fa fa-calendar-o"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 col-sm-offset-1">
+                                            <div class="name min-width-180 sm-min-width-200">Maturity Amount</div>
+                                            <!--here-->
+                                            <div class="inner-addon left-addon col-xs-12">
+                                                <input type="number" class="col-xs-12 maturity-amount"/>
+                                                <i class="fa fa-usd" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<div class="row margin-top-30 margin-bottom-40 cursor-pointer" id="add-retirement">-->
+                                <!--<div class="col-xs-1 property text-right"><i class="fa fa-plus-circle"-->
+                                                                             <!--aria-hidden="true"></i></div>-->
+                                <!--<div class="col-xs-11 property text-left">Add another product</div>-->
+                            <!--</div>-->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-4 title text-left">Other Assets</div>
+                    <div class="col-sm-8">
+                        <div class="sub-container">
+                            <div class="sub-other-container">
+                                <div class="sub-other-group-0">
+                                    <div class="row">
+                                        <div class="input-wraper col-xs-12">
+                                            <div class="input-background col-xs-12 inner-addon right-addon">
+                                                <input type="text" class="text-input col-xs-10">
+                                                <i class="fa fa-caret-down icon-collapse-click col-xs-2"
+                                                   aria-hidden="true" data-class=".sub-other"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row margin-top-30 sub-other">
+                                        <div class="name col-xs-12">Expected value upon Retirement</div>
+                                        <div class="col-sm-3">
+                                            <div class="inner-addon left-addon col-xs-12">
+                                                <input type="number" class="col-xs-12 other-asset"/>
+                                                <i class="fa fa-usd" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<div class="row margin-top-30 margin-bottom-40 cursor-pointer" id="add-other">-->
+                                <!--<div class="col-xs-1 property text-right"><i class="fa fa-plus-circle"-->
+                                                                             <!--aria-hidden="true"></i></div>-->
+                                <!--<div class="col-xs-11 property text-left">Add another asset</div>-->
+                            <!--</div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="col-xs-12">
+                    <div class="wiz">
+                        <img src="{% static 'gfxs/wz/wis-2.png' %}">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-offset-4 col-md-4 col-xs-5">
+                    <a>
+                        <button class="col-xs-12 btn btn-default btn-magic" id="btn-magic">Magic!</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Analysis & Strategy - Result-->
+    <style>
+        .main-form {
+            width: 100%;
+            position: relative;
+        }
+
+        .part-1 {
+            background: #eeeeef;
+            padding-top: 30px;
+        }
+
+        .part-2, .part-3 {
+            background: #ffffff;
+            padding-top: 30px;
+        }
+
+        .part-4 {
+            background: #ffffff;
+            padding-top: 60px;
+        }
+
+        #result-retirement .no-pad {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        #result-retirement .big-text {
+            font-size: 2.22rem;
+            font-family: 'Signika', sans-serif;
+        }
+
+        #result-retirement .medium-text {
+            font-size: 1.11rem;
+        }
+
+        #result-retirement .small-text {
+            font-size: 0.78rem;
+        }
+
+        #result-retirement .bold-text {
+            font-weight: bold;
+        }
+
+        #result-retirement .orange-text {
+            color: #ff8c24;
+        }
+
+        #result-retirement .white-text {
+            color: #ffffff;
+        }
+
+        #result-retirement .orange-btn {
+            color: #ffffff;
+            background: #ff8c24;
+            border-color: #ff8c24;
+        }
+
+        #result-retirement .orange-btn:hover {
+            color: #ffffff;
+            background: #cccccc;
+            border-color: #ff8c24;
+        }
+
+        .part-1 .footer-part {
+            background: #eeeeef;
+            height: 65px;
+            border-top: 3px #ff8c24 solid;
+        }
+
+        .part-1 .main-part {
+            background: white;
+            margin-top: 20px;
+        }
+
+        #result-retirement .wiz-background {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            min-height: 232px;
+            width: 168px;
+            background: url({% static "gfxs/wz/wiz-1.png" %}) no-repeat right bottom;
+        }
+
+        #result-retirement .tip-background {
+            position: absolute;
+            right: 120px;
+            bottom: 125px;
+            min-height: 175px;
+            width: 253px;
+            background: url({% static "gfxs/wz/tip-bg.png" %}) no-repeat right bottom;
+        }
+
+        #result-retirement .tip-background .tip {
+            padding: 40px;
+        }
+
+        #result-retirement .male-background {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            min-height: 621px;
+            width: 245px;
+            background: url({% static "gfxs/wz/male.png" %}) no-repeat left bottom;
+        }
+
+        #result-retirement #btn-down {
+            width: 50px;
+            height: 40px;
+            color: #ffffff;
+            background: #ff8c24;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 5px;
+            border-bottom-right-radius: 8px;
+            border-bottom-left-radius: 8px;
+        }
+
+        #result-retirement .infor-assumption {
+            margin-top: 50px;
+            padding-right: 30px;
+        }
+
+        #result-retirement .numbers {
+            padding-right: 30px;
+        }
+
+        #result-retirement .number .title {
+            min-height: 56px;
+        }
+
+        #result-retirement .infor-assumption .wrapper {
+            border-bottom: 5px #ff8c24 solid;
+        }
+
+        #result-retirement .user .name i {
+            font-size: 1.22rem;
+        }
+
+        #result-retirement .user .infor {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        #result-retirement .user .retirement-age {
+            margin-bottom: 10px;
+        }
+
+        #result-retirement .user .retirement-age.age {
+            padding-top: 10px;
+        }
+
+        #result-retirement .assumptions {
+            background: #03256c;
+            border-top-right-radius: 10px;
+            border-top-left-radius: 10px;
+        }
+
+        #result-retirement .assumptions .title {
+            margin-top: 35px;
+            margin-bottom: 30px;
+        }
+
+        #result-retirement .assumptions .source {
+            margin-top: 30px;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        #result-retirement .assumption {
+            float: left;
+            width: 20%;
+            cursor: pointer;
+        }
+
+        #result-retirement .assumption .detail {
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        #result-retirement .number {
+            margin-top: 50px;
+        }
+
+        #result-retirement .number .input {
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        #result-retirement .number .input input {
+            border: none; /* Good browsers universal rule */
+            outline: none; /* safari and its variants  */
+            outline-offset: 0; /* IE and its variants  */
+            -webkit-appearance: none; /* Chrome and its variants  */
+            background: #ffffff;
+        }
+
+        #result-retirement .retirement-plan-text {
+            margin-top: 50px;
+            margin-bottom: 30px;
+        }
+
+        #result-retirement input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+            opacity: 1 !important;
+            -webkit-appearance: none;
+        }
+
+        #result-retirement input[type=number]::-webkit-inner-spin-button {
+            cursor: pointer;
+            display: block;
+            text-align: center;
+            background: url({% static "gfxs/wz/arrow.png" %}) no-repeat 50 % 50 %;
+            width: 14px;
+            height: 18px;
+            padding: 4px;
+            position: relative;
+        }
+
+        #result-retirement .cyan-text {
+            font-size: 1.72rem;
+            color: #4cc1b1;
+            font-family: 'Signika', sans-serif;
+        }
+
+        #result-retirement .rosered-text {
+            font-size: 1.72rem;
+            color: #d71651;
+            font-family: 'Signika', sans-serif;
+        }
+
+        #result-retirement .cyan-title {
+            margin-top: 50px;
+        }
+
+        #result-retirement .breakout-btn {
+            font-size: 1rem;
+        }
+
+        #result-retirement .need-part .circle-bg {
+            width: 80px;
+            height: 80px;
+            background: #cdd3e2;
+            -moz-border-radius: 70px;
+            -webkit-border-radius: 70px;
+            border-radius: 70px;
+        }
+
+        #result-retirement .circle-label {
+            width: 40px;
+            margin-left: 10 p;
+            text-align: center;
+            margin: 0 auto;
+            padding-top: 13px;
+        }
+
+        #result-retirement .grey-bg {
+            background: #f5f5f5;
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+
+        #result-retirement .grey-bg .big-text, .strategy .big-text {
+            font-size: 1.72rem;
+        }
+
+        #result-retirement .x-icon {
+            font-size: 1.22rem;
+            padding-top: 7px;
+        }
+
+        #result-retirement .need-line {
+            height: 40px;
+            margin-top: 5px;
+            background: url({% static "gfxs/wz/need-line.png" %}) no-repeat;
+        }
+
+        #result-retirement .orange-line {
+            display: none;
+            border-bottom: solid 5px #ff8c24;
+        }
+
+        #result-retirement .fulfill-part .orange-line {
+            padding-top: 25px;
+        }
+
+        #result-retirement .fulfill-part .need-line {
+            margin-top: 30px;
+        }
+
+        #result-retirement .center-part .or-label {
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+
+        #result-retirement .less-part .number-space {
+            height: 30px;
+        }
+
+        #result-retirement .fulfill-part .message {
+            margin-top: 20px;
+        }
+
+        #result-retirement .strategy {
+            margin-top: 30px;
+        }
+
+        #result-retirement .inner-addon {
+            position: relative;
+            padding: 0;
+        }
+
+        #result-retirement .inner-addon i {
+            position: absolute;
+            padding: 10px;
+            pointer-events: none;
+            padding-top: 7px;
+            color: #ff8c24;
+            font-size: 1.11rem;
+        }
+
+        #result-retirement .input-background i {
+            font-size: 2.22rem;
+        }
+
+        #result-retirement .left-addon i {
+            left: 0px;
+        }
+
+        #result-retirement .right-addon i {
+            right: 0px;
+        }
+
+        #result-retirement .left-addon input {
+            padding-left: 30px;
+        }
+
+        #result-retirement .right-addon input {
+            padding-right: 30px;
+        }
+
+        #result-retirement .side-part {
+            margin-top: 30px;
+        }
+
+        #result-retirement .strategy {
+            height: 80px;
+        }
+
+        #result-retirement .strategy-slider-wrapper .slider {
+            width: 100%;
+            margin: 0 auto;
+            margin-top: 35px;
+            text-align: center;
+        }
+
+        #result-retirement .strategy-slider-wrapper .slider-handle.custom::before {
+            width: 35px;
+            content: " ";
+            background: url({% static "gfxs/wz/scrub-3.png" %}) no-repeat;
+            position: absolute;
+            left: -4px;
+            top: -18px;
+            background-size: 100%;
+            height: 60px;
+        }
+
+        #result-retirement .strategy-slider-wrapper .slider-tick.custom::before {
+            line-height: 20px;
+            font-size: 18px;
+            content: "\00a0";
+            color: #726204;
+            background: #ff8c24;
+        }
+
+        #result-retirement .strategy-slider-wrapper .slider-tick.in-selection {
+            background: none;
+        }
+
+        #result-retirement .strategy-slider-wrapper .slider-selection.tick-slider-selection, #result-retirement .strategy-slider-wrapper .slider-track-low, #result-retirement .strategy-slider-wrapper .slider-track-high {
+            background-image: linear-gradient(to bottom, #ff8c24 0, #ff8c24 100%);
+        }
+
+        #result-retirement .strategy-slider-wrapper .slider.slider-horizontal {
+            height: 25px;;
+        }
+
+        #result-retirement .strategy-slider-wrapper .slider.slider-horizontal .slider-track {
+            height: 5px;
+        }
+
+        #result-retirement .strategy-slider-wrapper .slider.slider-horizontal .slider-tick {
+            margin: 0;
+            width: 5px;
+        }
+
+        #result-retirement .allocation-slider-wrapper {
+            height: 120px;
+        }
+
+        #result-retirement .allocation-slider-wrapper .slider {
+            width: 100%;
+            margin: 0 auto;
+            margin-top: 35px;
+        }
+
+        #result-retirement .allocation-slider-wrapper .slider-track-high {
+            background: #ff8b23;
+        }
+
+        #result-retirement .allocation-slider-wrapper .slider-selection {
+            background: #ffb400;
+        }
+
+        #result-retirement .allocation-slider-wrapper .slider.slider-horizontal .slider-track {
+            height: 40px;
+        }
+
+        #result-retirement .allocation-slider-wrapper .slider-selection, .allocation-slider-wrapper .slider-track-high {
+            border-radius: 0;
+        }
+
+        #result-retirement .allocation-slider-wrapper .slider-handle.custom::before {
+            width: 33px;
+            content: " ";
+            background: url({% static "gfxs/wz/scrub-4.png" %}) no-repeat;
+            position: absolute;
+            left: -5px;
+            top: -10px;
+            height: 80px;
+            background-size: 100%;
+        }
+
+        #result-retirement .tooltip.bottom .tooltip-arrow {
+            display: none;
+        }
+
+        #result-retirement .tooltip-inner {
+            color: #03256c;
+            background: none;
+            font-size: 1.22rem;
+            font-family: 'Signika', sans-serif;
+            font-weight: bold;
+            padding-top: 15px;
+        }
+
+        #result-retirement .allocation-percent {
+            color: #ffffff;
+            font-family: 'Signika', sans-serif;
+            font-weight: bold;
+            text-align: center;
+            font-size: 1.22rem;
+            padding-top: 5px;
+        }
+
+        #result-retirement .allocation {
+            margin-top: 30px;
+        }
+
+        #result-retirement .allocation-type {
+            font-size: 1.42rem;
+        }
+
+        #result-retirement .allocation-type i {
+            font-size: 2.22rem;
+        }
+
+        #result-retirement .allocation-result .left {
+            border-right: 5px solid white;
+        }
+
+        #result-retirement .allocation-result .right {
+            border-left: 5px solid white;
+        }
+
+        #result-retirement .allocation-result .result-1 {
+            margin-top: 30px;
+        }
+
+        #result-retirement .allocation-result .result-1 .col-xs-6, #result-retirement .allocation-result .result-2 .col-xs-6 {
+            height: 60px;
+        }
+
+        #result-retirement .allocation-result .result-3 {
+            min-height: 41px;
+        }
+
+        .compare-list {
+            margin-top: 80px;
+        }
+
+        .recommendation-table-wrapper {
+            margin-top: 40px;
+        }
+
+        .compare-list .total-result {
+            color: #666666;
+            font-size: 1.44rem;
+            font-style: italic;
+        }
+
+        .fa.fa-pencil {
+            cursor: pointer;
+        }
+
+        @media screen and (max-width: 990px) {
+            #result-retirement .numbers, #result-retirement .numbers input{
+                text-align: center;
+            }
+            #result-retirement .male-background {
+                display: none;
+            }
+
+            #result-retirement .infor-assumption, .numbers {
+                padding-right: 0;
+            }
+
+            #result-retirement .user {
+                text-align: center;
+            }
+
+            #result-retirement .retirement-plan-text {
+                margin-bottom: 270px;
+            }
+
+            #result-retirement .inner-addon i {
+                padding-top: 4px;
+            }
+
+            #result-retirement .need-line {
+                display: none;
+            }
+
+            #result-retirement .center-part {
+                padding-top: 20px;
+                padding-bottom: 20px;
+                border-top: 2px solid #03256c;
+                border-bottom: 2px solid #03256c;
+            }
+
+            #result-retirement .center-part .or-label {
+                margin-top: 0px;
+                margin-bottom: 10px;
+            }
+
+            #result-retirement .side-part {
+                margin-top: 0px;
+            }
+
+            #result-retirement .side-part.left {
+                padding-top: 20px;
+                border-top: 2px solid #03256c;
+            }
+
+            #result-retirement .side-part.right {
+                margin-top: 20px;
+                border-bottom: 2px solid #03256c;
+            }
+
+            #result-retirement .less-part .number-space {
+                display: none;
+            }
+
+            #result-retirement .less-part .grey-bg .text-right, .less-part .grey-bg .text-left {
+                text-align: center;
+            }
+
+            .strategy-slider-wrapper {
+                height: 100px;
+            }
+
+            #step-2 .downgrading-radio input[type="radio"]:checked + span:after {
+                top: 4px;
+            }
+        }
+
+        @media only screen and (max-width: 600px) {
+            #result-retirement .male-background {
+                display: none;
+            }
+
+            #result-retirement .infor-assumption, .numbers {
+                padding-right: 0;
+            }
+
+            #result-retirement .user {
+                text-align: center;
+            }
+
+            #result-retirement .retirement-plan-text {
+                margin-bottom: 270px;
+            }
+
+            #result-retirement .inner-addon i {
+                padding-top: 4px;
+            }
+
+            #result-retirement .need-line {
+                display: none;
+            }
+
+            #result-retirement .center-part {
+                padding-top: 20px;
+                padding-bottom: 20px;
+                border-top: 2px solid #03256c;
+                border-bottom: 2px solid #03256c;
+            }
+
+            #result-retirement .center-part .or-label {
+                margin-top: 0px;
+                margin-bottom: 10px;
+            }
+
+            #result-retirement .side-part {
+                margin-top: 0px;
+            }
+
+            #result-retirement .side-part.left {
+                padding-top: 20px;
+                border-top: 2px solid #03256c;
+            }
+
+            #result-retirement .side-part.right {
+                margin-top: 20px;
+                border-bottom: 2px solid #03256c;
+            }
+
+            #result-retirement .less-part .number-space {
+                display: none;
+            }
+
+            #result-retirement .less-part .grey-bg .text-right, .less-part .grey-bg .text-left {
+                text-align: center;
+            }
+
+            .strategy-slider-wrapper {
+                height: 100px;
+            }
+        }
+    </style>
+    <div id="result-retirement" class="hidden">
+        <div class="main-form part-1">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 big-text bold-text text-center">Analysis & Strategy</div>
+                    <div class="col-xs-12 no-pad main-part">
+                        <div class="col-md-offset-3 col-md-9 col-xs-12 no-pad infor-assumption">
+                            <div class="wrapper col-xs-12 no-pad">
+                                <div class="col-md-4 col-xs-12 user">
+                                    <div class="col-xs-12 big-text bold-text orange-text name" style="word-break: break-word;"><span
+                                            class="init-name"></span> <i class="fa fa-pencil" aria-hidden="true" data-toggle="modal" data-target="#userModal"></i>
+                                    </div>
+                                    <div class="col-xs-12 medium-text infor">
+                                        <span class="init-age"></span> years old<br/>
+                                        <span class="init-sex"></span>, <span class="init-smoker"></span><br/>
+                                    </div>
+                                    <div class="col-xs-12 medium-text bold-text">
+                                        Expected retirement: <span
+                                            class="orange-text big-text bold-text retirement-at-age">60</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-8 col-xs-12 no-pad assumptions">
+                                    <div class="col-xs-12 small-text bold-text white-text text-center title">
+                                        Assumptions
+                                    </div>
+                                    <div class="col-xs-12 text-center">
+                                        <div class="assumption text-center" data-toggle="modal" data-target="#annualIncomeModal">
+                                            <div class="col-xs-12 medium-text bold-text white-text percent"><span class=" assumption-income-rate">4</span>%</div>
+                                            <div class="col-xs-12 small-text white-text detail" >Income Growth Rate</div>
+                                        </div>
+                                        <div class="assumption text-center" data-toggle="modal" data-target="#cashSavingModal">
+                                            <div class="col-xs-12 medium-text bold-text white-text percent"><span class=" assumption-investment-rate">2</span>%</div>
+                                            <div class="col-xs-12 small-text white-text detail">Investment Return Rate
+                                            </div>
+                                        </div>
+                                        <div class="assumption text-center" data-toggle="modal" data-target="#totalPropertyModal">
+                                            <div class="col-xs-12 medium-text bold-text white-text percent"><span class=" assumption-property-rate">4</span>%</div>
+                                            <div class="col-xs-12 small-text white-text detail" >Property Growth Rate
+                                            </div>
+                                        </div>
+                                        <div class="assumption text-center" data-toggle="modal" data-target="#annualExpensesModal">
+                                            <div class="col-xs-12 medium-text bold-text white-text percent"><span class=" assumption-inflation-rate">2</span>%</div>
+                                            <div class="col-xs-12 small-text white-text detail" >Inflation Rate</div>
+                                        </div>
+                                        <div class="assumption text-center">
+                                            <div class="col-xs-12 medium-text bold-text white-text percent"><span
+                                                    class="init-life-expect-non-smoker"></span></div>
+                                            <div class="col-xs-12 small-text white-text detail">Life expectancy (<span
+                                                    class="init-sex"></span>, Singapore)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 small-text white-text text-left source">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-offset-3 col-md-9 col-sm-12 col-xs-12 no-pad numbers">
+                            <div class="wrapper col-xs-12 no-pad">
+                                <div class="col-xs-12 medium-text bold-text" style="margin-top: 25px;">At point of Retirement, these will be your projected Financial Situation:</div>
+                                <div class="col-md-3 col-xs-6 number no-pad">
+                                    <div class="col-xs-12 medium-text bold-text title">Annual Income</div>
+                                    <div class="col-xs-12 input inner-addon left-addon">
+
+                                        <input type="text"
+                                               class="col-xs-12 medium-text bold-text orange-text result-annual-income"
+                                               value="">
+                                        <i class="fa fa-usd" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="col-xs-12 details">
+                                        <div class="btn orange-btn bold-text medium-text" data-toggle="modal" data-target="#annualIncomeModal">Details</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-xs-6 number no-pad">
+                                    <div class="col-xs-12 medium-text bold-text title">Annual Expenses</div>
+                                    <div class="col-xs-12 input inner-addon left-addon">
+
+                                        <input type="text"
+                                               class="col-xs-12 medium-text bold-text orange-text result-annual-expenses"
+                                               value="">
+                                        <i class="fa fa-usd" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="col-xs-12 details">
+                                        <div class="btn orange-btn bold-text medium-text" data-toggle="modal" data-target="#annualExpensesModal">Details</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-xs-6 number no-pad">
+                                    <div class="col-xs-12 medium-text bold-text title">Cash Savings</div>
+                                    <div class="col-xs-12 input inner-addon left-addon">
+
+                                        <input type="text"
+                                               class="col-xs-12 medium-text bold-text orange-text result-cashsaving"
+                                               value="">
+                                        <i class="fa fa-usd" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="col-xs-12 details">
+                                        <div class="btn orange-btn bold-text medium-text" data-toggle="modal" data-target="#cashSavingModal">Details</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-xs-6 number no-pad">
+                                    <div class="col-xs-12 medium-text bold-text title">Total Property Value</div>
+                                    <div class="col-xs-12 input inner-addon left-addon">
+
+                                        <input type="text"
+                                               class="col-xs-12 medium-text bold-text orange-text result-total-property-value"
+                                               value="">
+                                        <i class="fa fa-usd" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="col-xs-12 details">
+                                        <div class="btn orange-btn bold-text medium-text" data-toggle="modal" data-target="#totalPropertyModal">Details</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-xs-6 number no-pad">
+                                    <div class="col-xs-12 medium-text bold-text title">Retirement Products</div>
+                                    <div class="col-xs-12 input inner-addon left-addon">
+
+                                        <input type="text"
+                                               class="col-xs-12 medium-text bold-text orange-text result-retirement-products"
+                                               value="">
+                                        <i class="fa fa-usd" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="col-xs-12 details">
+                                        <div class="btn orange-btn bold-text medium-text" data-toggle="modal" data-target="#retirementProductsModal">Details</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-xs-6 number no-pad">
+                                    <div class="col-xs-12 medium-text bold-text title">Other Assets</div>
+                                    <div class="col-xs-12 input inner-addon left-addon">
+
+                                        <input type="text"
+                                               class="col-xs-12 medium-text bold-text orange-text result-other-assets"
+                                               value="">
+                                        <i class="fa fa-usd" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="col-xs-12 details">
+                                        <div class="btn orange-btn bold-text medium-text" data-toggle="modal" data-target="#otherAssetsModal">Details</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 no-pad text-center medium-text bold-text retirement-plan-text">Your
+                            retirement plan below
+                        </div>
+                        <div class="col-xs-12 no-pad male-background"></div>
+                    </div>
+                    <div class="col-xs-12 footer-part">
+                        <div class="col-xs-12">
+                            <div id="btn-down"><img src="{% static 'gfxs/wz/down-icon.png' %}"></div>
+                        </div>
+                        <div class="tip-background">
+                            <div class="medium-text tip">Be sure to adjust accordingly to get the most accurate plan!
+                            </div>
+                        </div>
+                        <div class="wiz-background">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="main-form part-2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 big-text bold-text text-center">We made some calculations</div>
+                    <div class="col-xs-12 medium-text text-center">
+                        based on your input and our assumptions:
+                    </div>
+                    <div class="col-xs-12 bold-text text-center cyan-text cyan-title">
+                        You will need ...
+                    </div>
+                    <div class="col-xs-12 no-pad need-part">
+                        <div class="col-md-4 col-xs-12 no-pad bold-text side-part left">
+                            <div class="col-xs-3">
+                                <div class="circle-bg">
+                                    <div class="medium-text circle-label">Min. (E)</div>
+                                </div>
+                            </div>
+                            <div class="col-xs-9">
+                                <div class="col-xs-9 text-right medium-text">Expenses Based Approach</div>
+                                <div class="col-xs-3 big-text">
+                                    <i class="fa fa-question-circle" aria-hidden="true"></i>
+                                </div>
+                                <div class="col-xs-12 big-text">$ <span class="expenses-based-approach"></span></div>
+                            </div>
+                            <div class="col-xs-12 orange-line"></div>
+                            <div class="col-xs-12 need-line"></div>
+                            <div class="col-xs-12 no-pad text-center grey-bg">
+                                <div class="col-xs-5 no-pad">
+                                    <div class="col-xs-12 big-text orange-text no-pad">$<span
+                                            class="annual-expenditure"></span></div>
+                                    <div class="col-xs-12 small-text no-pad">(your annual expenditure)</div>
+                                </div>
+                                <div class="col-xs-2 no-pad text-center x-icon">X</div>
+                                <div class="col-xs-5 no-pad text-center">
+                                    <div class="col-xs-12 big-text no-pad"><span class="retirement-age"></span> years
+                                    </div>
+                                    <div class="col-xs-12 small-text no-pad">(Life expectancy - retirement age)</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-xs-12 text-center center-part">
+                            <div class="col-xs-12 or-label bold-text medium-text">or</div>
+                            <div class="btn orange-btn breakout-btn hide-breakout-btn bold-text">Hide Breakout</div>
+                            <div class="btn orange-btn breakout-btn show-breakout-btn bold-text" style="display: none;">
+                                See Breakout
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-xs-12 no-pad bold-text side-part right">
+                            <div class="col-xs-9">
+                                <div class="col-xs-3 big-text">
+                                    <i class="fa fa-question-circle" aria-hidden="true"></i>
+                                </div>
+                                <div class="col-xs-9 text-left medium-text">Income Based Approach</div>
+
+                                <div class="col-xs-12 big-text">$ <span class="income-based-approach"></span></div>
+                            </div>
+                            <div class="col-xs-3">
+                                <div class="circle-bg">
+                                    <div class="medium-text circle-label">Max. (I)</div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 orange-line"></div>
+                            <div class="col-xs-12 need-line"></div>
+                            <div class="col-xs-12 no-pad text-center grey-bg">
+                                <div class="col-xs-5 no-pad">
+                                    <div class="col-xs-12 big-text orange-text no-pad">$<span
+                                            class="annual-income-to-base"></span></div>
+                                    <div class="col-xs-12 small-text no-pad">(your annual income)</div>
+                                </div>
+                                <div class="col-xs-2 no-pad text-center x-icon">X</div>
+                                <div class="col-xs-5 no-pad text-center">
+                                    <div class="col-xs-12 big-text no-pad"><span class="retirement-age"></span> years
+                                    </div>
+                                    <div class="col-xs-12 small-text no-pad">(Life expectancy - retirement age)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 bold-text text-center cyan-title cyan-text">
+                        Less Monetization & Saving <span style="color: #03256c;font-size: 1.24rem;">(S)</span>
+                    </div>
+                    <div class="col-xs-12 no-pad less-part">
+                        <div class="col-xs-12 text-center big-text">
+                            <span>-</span>
+                            <span class="orange-text">$ <span class="less-monetization-saving"></span></span>
+                            <span class="orange-text hide-caret"><i class="fa fa-caret-down"
+                                                                    aria-hidden="true"></i></span>
+                            <span class="orange-text show-caret" style="display: none;"><i class="fa fa-caret-left"
+                                                                                           aria-hidden="true"></i></span>
+                        </div>
+                        <div class="col-xs-12 grey-bg bold-text">
+                            <div class="col-md-2 col-xs-11">
+                                <div class="col-xs-12 no-pad">
+                                    <div class="col-xs-12 big-text orange-text text-center">$<span
+                                            class="saving-at-retirement"></span></div>
+                                    <div class="col-xs-12 small-text text-center">(Saving at retirement)</div>
+                                </div>
+                            </div>
+                            <div class="col-xs-1 text-center big-text">+</div>
+                            <div class="col-md-2 col-xs-11 text-right">
+                                <div class="col-xs-12 no-pad">
+                                    <div class="col-xs-12 big-text orange-text text-center">$<span
+                                            class="from-property-downgrade"></span></div>
+                                    <div class="col-xs-12 small-text text-center">(From Property downgrade)</div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-1 col-xs-1 text-center big-text">+</div>
+                            <div class="col-md-2 col-xs-11 text-left">
+                                <div class="col-xs-12 no-pad">
+                                    <div class="col-xs-12 big-text orange-text text-center">$<span
+                                            class="retirement-product-maturity"></span></div>
+                                    <div class="col-xs-12 small-text text-center">(Retirement Product Maturity)</div>
+                                </div>
+                            </div>
+                            <div class="col-md-1 text-center big-text col-xs-1">+</div>
+                            <div class="col-md-2 text-left col-xs-11">
+                                <div class="col-xs-12 no-pad">
+                                    <div class="col-xs-12 big-text orange-text text-center">$<span
+                                            class="sale-of-other-assets"></span></div>
+                                    <div class="col-xs-12 small-text text-center">(Sale of Other Assets)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 bold-text text-center cyan-text cyan-title">
+                        To fulfill your retirement plans you will need around
+                    </div>
+                    <div class="col-xs-12 no-pad fulfill-part">
+                        <div class="col-md-4 col-xs-12 no-pad bold-text side-part left">
+                            <div class="col-xs-12 text-center">
+                                <div class="col-xs-12 medium-text">Mininum</div>
+                                <div class="col-xs-12 big-text">$ <span class="minimum-goal"></span></div>
+                            </div>
+                            <div class="col-xs-12 orange-line"></div>
+                            <div class="col-xs-12 need-line"></div>
+                            <div class="col-xs-12 grey-bg text-center no-pad">
+                                <div class="col-xs-12 small-text">
+                                    <div class="col-xs-6">(E)</div>
+                                    <div class="col-xs-6">(S)</div>
+                                </div>
+                                <div class="col-xs-12 big-text">
+                                    <span>$<span class="expenses-based-approach"></span></span>
+                                    <span> - </span>
+                                    <span class="orange-text">$<span class="less-monetization-saving"></span></span>
+                                </div>
+                                <div class="col-xs-12 big-text cyan-text">
+                                    = $<span class="minimum-goal-negative"></span>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 bold-text medium-text text-center message minimum-note">Well done! We've covered
+                                the minimum for a retirement. Hence the lower/minimum has been increased.
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-xs-12 text-center center-part">
+                            <div class="col-xs-12 or-label bold-text medium-text">and</div>
+                            <div class="btn orange-btn breakout-btn hide-breakout-btn bold-text">Hide Breakout</div>
+                            <div class="btn orange-btn breakout-btn show-breakout-btn bold-text" style="display: none;">
+                                See Breakout
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-xs-12 no-pad bold-text side-part right">
+                            <div class="col-xs-12 text-center">
+                                <div class="col-xs-12 medium-text">Maximum</div>
+                                <div class="col-xs-12 big-text">$ <span class="maximum-goal"></span></div>
+                            </div>
+                            <div class="col-xs-12 orange-line"></div>
+                            <div class="col-xs-12 need-line"></div>
+                            <div class="col-xs-12 grey-bg text-center no-pad">
+                                <div class="col-xs-12 small-text">
+                                    <div class="col-xs-6">(I)</div>
+                                    <div class="col-xs-6">(S)</div>
+                                </div>
+                                <div class="col-xs-12 big-text">
+                                    <span>$<span class="income-based-approach"></span></span>
+                                    <span> - </span>
+                                    <span class="orange-text">$<span class="less-monetization-saving"></span></span>
+                                </div>
+                                <div class="col-xs-12 big-text rosered-text">
+                                    = $<span class="maximum-goal-negative"></span>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 bold-text medium-text text-center message maximum-note">Well done! We've covered the minimum for a retirement. Hence the lower/minimum has been increased.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main-form part-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 big-text bold-text text-center">Here's a possible strategy</div>
+                    <div class="col-xs-12 medium-text text-center">
+                        First determine the gap to fulfill then select the allocation to help reach your retirement
+                        goal.
+                    </div>
+                    <div class="col-xs-12 no-pad strategy">
+                        <div class="col-md-3 col-xs-12 medium-text bold-text text-left no-pad">
+                            <div class="col-xs-12 medium-text">Minimum</div>
+                            <div class="col-xs-12 big-text">$<span class="minimum-goal"></span></div>
+                        </div>
+                        <div class="strategy-slider-wrapper col-md-6 col-xs-12 no-pad">
+                            <input id="strategy-slider"
+                                   type="text"
+                                   class="col-xs-12"
+                                   data-slider-handle="custom"
+                                    />
+                        </div>
+                        <div class="col-md-3 col-xs-12 bold-text text-right no-pad">
+                            <div class="col-xs-12 medium-text">Maximum</div>
+                            <div class="col-xs-12 big-text">$<span class="maximum-goal"></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main-form part-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 big-text bold-text text-center cyan-text">Suggested allocation</div>
+                    <div class="col-xs-12 medium-text text-center">
+                        Adjust the bars to get an allocation that suits you
+                    </div>
+                    <div class="col-xs-12 no-pad allocation">
+                        <div class="col-xs-6 medium-text bold-text text-center allocation-type">
+                            <i class="fa fa-question-circle" aria-hidden="true"></i> Insurance Endowment
+                        </div>
+                        <div class="col-xs-6 medium-text bold-text text-center allocation-type">
+                            Fund Investment <i class="fa fa-question-circle" aria-hidden="true"></i>
+                        </div>
+                        <div class="allocation-slider-wrapper col-xs-12 no-pad">
+                            <input id="allocation-slider" type="text" data-slider-handle="custom"
+                                   data-slider-tooltip="hide"/><br/>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 no-pad allocation-result">
+                        <div class="col-md-6 col-xs-12 grey-bg left no-pad">
+                            <div class="col-xs-12 text-center medium-text">Endowment plans has a projected growth<br/>
+                                rate
+                                of <b>2% p.a.</b> to <b>4% p.a.</b>,<br/>depending on the plan selected.<br/>Your
+                                principle sum may be guaranteed.
+                            </div>
+                            <div class="col-xs-12 result-1">
+                                <div class="col-xs-6 bold-text">Estimated Total<br/>at maturity</div>
+                                <div class="col-xs-6 big-text bold-text">$<span
+                                        id="insurance-endowment-estimated-total"></span></div>
+                            </div>
+                            <div class="col-xs-12 result-2">
+                                <div class="col-xs-6 bold-text">Estimated annual<br/>budget</div>
+                                <div class="col-xs-6 big-text bold-text">$<span id="insurance-estimated-annual-budget"></span></div>
+                            </div>
+                            <div class="col-xs-12 result-3">
+                                <button type="button"
+                                        class="btn orange-btn col-sm-offset-3 col-sm-6  col-xs-12 medium-text bold-text text-center"
+                                        id="find-solutions">Find Solutions
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xs-12 grey-bg right no-pad">
+                            <div class="col-xs-12 text-center medium-text">Fund investment has a projected yield<br/>
+                                between <b>6% p.a.</b> to <b>8% p.a.</b>,<br/> depending on the portfolio
+                                performance.<br/> Your principal is not guaranteed.
+                            </div>
+                            <div class="col-xs-12 result-1">
+                                <div class="col-xs-6 bold-text">Estimated Total<br/>at maturity</div>
+                                <div class="col-xs-6 big-text bold-text">$<span
+                                        id="fund-investment-estimated-total"></span></div>
+                            </div>
+                            <div class="col-xs-12 result-2">
+                                <div class="col-xs-6 bold-text">Estimated annual<br/>budget</div>
+                                <div class="col-xs-6 big-text bold-text">$<span id="fund-estimated-annual-budget"></span></div>
+                            </div>
+                            <div class="col-xs-12 result-3">
+                                <button type="button"
+                                        class="btn orange-btn col-sm-offset-3 col-sm-6  col-xs-12 medium-text bold-text text-center">
+                                    Speak to our advisor
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 recommendation compare-list" style="display: none;">
+                        <div class="col-xs-12 big-text">Insurance Endownment <span class="total-result"><span class="total-result-value"></span> results</span></div>
+                        <div class="col-xs-12 recommendation-table-wrapper">
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th class="col-2">
+                                        <div class="display-table">
+                                            <div class="col-1">Product</div>
+                                            <div class="col-2 fs-14">Common</div>
+                                            <div class="col-3 fs-14">Riders</div>
+                                            <div class="col-4 fs-14">Special Features</div>
+                                            <div class="col-5">$/year <sup>†*</sup></div>
+                                        </div>
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--BASE_HOME_BOTTOM-->
+    <!--MODAL DETAIL-->
+</div>
+<style>
+
+    .big-text {
+        font-size: 1.44rem;
+        font-family: 'Signika', sans-serif;
+    }
+    .orange-text {
+        color: #ff8c24;
+    }
+    .modal-dialog {
+        width: 50%;
+    }
+
+    @media screen and (max-width: 1140px) {
+        .modal-dialog {
+            width: 90%;
+        }
+    }
+
+    .modal-header {
+        border-bottom: none;
+    }
+    .modal-header .close {
+        opacity: 1;
+    }
+    .modal-header .close i {
+        color: #ff8c24;
+        font-size: 2rem;
+    }
+    .modal-content {
+        border: 3px solid #ff8c24;
+        box-shadow: none;
+        -webkit-box-shadow: none;
+        font-size: 1rem;
+    }
+    .modal-footer {
+        border-top: none;
+    }
+    .re-value .type {
+        color: #d9d9d9;
+        font-size: 0.88rem;
+    }
+
+    .re-value .inner-addon {
+        position: relative;
+        padding: 0;
+    }
+
+    .re-value .inner-addon i {
+        position: absolute;
+        padding: 7px;
+        padding-top: 10px;
+        pointer-events: none;
+        color: #ff8c24;
+        font-size: 16px;
+        color: #03246c;
+    }
+
+    .re-value .left-addon i {
+        left: 0px;
+    }
+
+    .re-value .right-addon i {
+        right: 50px;
+    }
+
+    .re-value .left-addon input {
+        padding-left: 18px;
+    }
+
+    .re-value .right-addon input {
+        padding-right: 18px;
+    }
+
+    .re-value .form-group {
+        padding-left: 0px;
+    }
+    .re-value .form-control {
+        width: 83%;
+    }
+    .re-value .inner-addon input {
+        display: inline;
+        width: auto;
+        width: 80%;
+        font-size: 1rem;
+    }
+
+    .re-value .row div, .re-total .row div {
+        line-height: 36px;
+        padding-left: 0;
+    }
+
+    .re-value select {
+        width: 83%;
+        height: 36px;
+        border: 2px solid #03246c;
+        color: #03246c;
+    }
+
+    .re-total select {
+        width: 70%;
+        height: 36px;
+        border: 2px solid #03246c;
+        color: #03246c;
+        text-align: center;
+    }
+    .re-value .modal-radio {
+        margin-top: 15px;
+    }
+
+    .re-value .modal-radio input[type="radio"] + span:before {
+        content: '';
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        margin: -1px 4px -1px -0px;
+        vertical-align: middle;
+        border: solid 2px #03256c;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    .re-value .modal-radio input[type="radio"]:checked + span:after {
+        content: '';
+        display: inline-block;
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        left: 25px;
+        top: 15px;
+        border-radius: 50%;
+        background-color: #03256c;
+    }
+
+    .re-value .modal-radio input[type="radio"] {
+        display: none;
+    }
+
+    .re-value .modal-radio span {
+        color: #03256c;
+        font-weight: bold;
+    }
+</style>
+<!--MODAL DETAIL-->
+<div class="modal fade" id="annualIncomeModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title orange-text big-text text-center bold-text"><span>Income & Savings Details</span>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                </button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="re-value">
+                    <div class="row">
+                        <div class="col-xs-7">Employment</div>
+                        <div class="col-xs-2 text-center type">Annually</div>
+                        <div class="col-xs-3 form-group inner-addon left-addon">
+                            <input type="number" value="" class="form-control employment">
+                            <i class="fa fa-usd" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-7">Others</div>
+                        <div class="col-xs-2 text-center type">Annually</div>
+                        <div class="col-xs-3 form-group inner-addon left-addon">
+                            <input type="number" value="" class="form-control others">
+                            <i class="fa fa-usd" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="re-total">
+                    <div class="row">
+                        <div class="col-xs-9">
+                            Current Annual Total
+                        </div>
+                        <div class="col-xs-3">
+                            $<span class="current-total"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-9">
+                            Income Growth Rate
+                        </div>
+                        <div class="col-xs-3">
+                            <select class="income-rate">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4" selected>4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                            </select> %
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-9 bold-text">
+                            Annual income at point of retirement
+                        </div>
+                        <div class="col-xs-3 bold-text">
+                            $<span class="retirement-total"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-9">
+                            % of last drawn income required for retirement
+                        </div>
+                        <div class="col-xs-3">
+                            <select class="last-draw">
+                                <option value="50">50</option>
+                                <option value="60">60</option>
+                                <option value="70" selected>70</option>
+                                <option value="80">80</option>
+                                <option value="90">90</option>
+                                <option value="100">100</option>
+                            </select> %
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-confirm">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="annualExpensesModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title orange-text big-text text-center bold-text"><span>Expenses Details</span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="re-value">
+                    <div class="row">
+                        <div class="col-xs-7">Mortgage</div>
+                        <div class="col-xs-2 text-center type">Monthly</div>
+                        <div class="col-xs-3 form-group inner-addon left-addon">
+                            <input type="number" value="" class="form-control mortgage">
+                            <i class="fa fa-usd" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-7">Transportation</div>
+                        <div class="col-xs-2 text-center type">Monthly</div>
+                        <div class="col-xs-3 form-group inner-addon left-addon">
+                            <input type="number" value="" class="form-control transportation">
+                            <i class="fa fa-usd" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-7">Household</div>
+                        <div class="col-xs-2 text-center type">Monthly</div>
+                        <div class="col-xs-3 form-group inner-addon left-addon">
+                            <input type="number" value="" class="form-control household">
+                            <i class="fa fa-usd" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-7">Dependants</div>
+                        <div class="col-xs-2 text-center type">Monthly</div>
+                        <div class="col-xs-3 form-group inner-addon left-addon">
+                            <input type="number" value="" class="form-control dependants">
+                            <i class="fa fa-usd" aria-hidden="true"></i>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-7">Income Tax</div>
+                        <div class="col-xs-2 text-center type">Annually</div>
+                        <div class="col-xs-3 form-group inner-addon left-addon">
+                            <input type="number" value="" class="form-control tax">
+                            <i class="fa fa-usd" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-7">Insurance Premiums</div>
+                        <div class="col-xs-2 text-center type">Annually</div>
+                        <div class="col-xs-3 form-group inner-addon left-addon">
+                            <input type="number" value="" class="form-control insurance">
+                            <i class="fa fa-usd" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-7">Others</div>
+                        <div class="col-xs-2 text-center type">Annually</div>
+                        <div class="col-xs-3 form-group inner-addon left-addon">
+                            <input type="number" value="" class="form-control other">
+                            <i class="fa fa-usd" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="re-total">
+                    <div class="row">
+                        <div class="col-xs-9">
+                            Current Annual Total
+                        </div>
+                        <div class="col-xs-3">
+                            $<span class="current-total"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-9">
+                            Inflation Rate
+                        </div>
+                        <div class="col-xs-3">
+                            <select class="inflation-rate">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2" selected>2</option>
+                                <option value="3">3</option>
+                                <option value="4" >4</option>
+                                <option value="5">5</option>
+                            </select> %
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-9 bold-text">
+                            Annual expense at point of retirement
+                        </div>
+                        <div class="col-xs-3 bold-text">
+                            $<span class="retirement-total"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-9">
+                            % of expense required for retirement
+                        </div>
+                        <div class="col-xs-3">
+                            <select class="last-draw">
+                                <option value="50">50</option>
+                                <option value="60">60</option>
+                                <option value="70" selected>70</option>
+                                <option value="80">80</option>
+                                <option value="90">90</option>
+                                <option value="100">100</option>
+                            </select> %
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-confirm">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="cashSavingModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title orange-text big-text text-center bold-text"><span>Saving Details</span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="re-value">
+                    <div class="row">
+                        <div class="col-xs-7">Cash Savings</div>
+                        <div class="col-xs-2 text-center type"></div>
+                        <div class="col-xs-3 form-group inner-addon left-addon">
+                            <input type="number" value="" class="form-control cash">
+                            <i class="fa fa-usd" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="re-total">
+                    <div class="row">
+                        <div class="col-xs-9">
+                            Current Total
+                        </div>
+                        <div class="col-xs-3">
+                            $<span class="current-total"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-9">
+                            Investment Return Rate
+                        </div>
+                        <div class="col-xs-3">
+                            <select class="investment-rate">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2" selected>2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                            </select> %
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-9 bold-text">
+                            Cash Savings at Retirement
+                        </div>
+                        <div class="col-xs-3 bold-text">
+                            $<span class="retirement-total"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-confirm">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="totalPropertyModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title orange-text big-text text-center bold-text"><span>Property Details</span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="re-value">
+                    <div class="row">
+                        <div class="col-xs-7">Age at Purchase</div>
+                        <div class="col-xs-2 text-center type"></div>
+                        <div class="col-xs-3 form-group">
+                            <input type="number" value="" class="form-control age-purchase">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-7">Property Type</div>
+                        <div class="col-xs-2 text-center type"></div>
+                        <div class="col-xs-3 form-group">
+                            <select class="property-type">
+                                <option value="Private">Private</option>
+                                <option value="HDB">HDB</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-7">Purchase Price</div>
+                        <div class="col-xs-2 text-center type"></div>
+                        <div class="col-xs-3 form-group inner-addon left-addon">
+                            <input type="number" value="" class="form-control purchase-price">
+                            <i class="fa fa-usd" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-7">Loan amount</div>
+                        <div class="col-xs-2 text-center type"></div>
+                        <div class="col-xs-3 form-group inner-addon left-addon">
+                            <input type="number" value="" class="form-control loan">
+                            <i class="fa fa-usd" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-7">Monthly loan Payment</div>
+                        <div class="col-xs-2 text-center type"></div>
+                        <div class="col-xs-3 form-group inner-addon left-addon">
+                            <input type="number" value="" class="form-control monthly-payment">
+                            <i class="fa fa-usd" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-7">Mortgage Interest Rate</div>
+                        <div class="col-xs-2 text-center type"></div>
+                        <div class="col-xs-3 form-group inner-addon right-addon">
+                            <input type="number" value="" class="form-control mortgage-rate">
+                            <i class="fa fa-percent" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="row margin-top-30 margin-bottom-40 cursor-pointer orange-text">-->
+                    <!--<div class="col-xs-1 property text-right">-->
+                        <!--<i class="fa fa-plus-circle" aria-hidden="true"></i>-->
+                    <!--</div>-->
+                    <!--<div class="col-xs-11 property text-left">Add another property</div>-->
+                <!--</div>-->
+                <div class="re-total">
+                    <div class="row">
+                        <div class="col-xs-9">
+                            Property Growth Rate
+                        </div>
+                        <div class="col-xs-3">
+                            <select class="property-rate">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4" selected>4</option>
+                                <option value="5">5</option>
+                            </select> %
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-9 bold-text">
+                            Total Property Value at Retirement
+                        </div>
+                        <div class="col-xs-3 bold-text">
+                            $<span class="retirement-total"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-confirm">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="retirementProductsModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title orange-text big-text text-center bold-text"><span>Retirement Products</span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="re-value">
+                    <div class="row">
+                        <div class="col-xs-7">Maturity Date</div>
+                        <div class="col-xs-2 text-center type"></div>
+                        <div class="col-xs-3 form-group inner-addon right-addon">
+                            <input type="text" value="" class="form-control maturity-date datetime-picker ">
+                            <i class="fa fa-calendar-o" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-7">Maturity Amount</div>
+                        <div class="col-xs-2 text-center type"></div>
+                        <div class="col-xs-3 form-group inner-addon left-addon">
+                            <input type="number" value="" class="form-control maturity-ammount">
+                            <i class="fa fa-usd" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="row margin-top-30 margin-bottom-40 cursor-pointer orange-text">-->
+                    <!--<div class="col-xs-1 property text-right">-->
+                        <!--<i class="fa fa-plus-circle" aria-hidden="true"></i>-->
+                    <!--</div>-->
+                    <!--<div class="col-xs-11 property text-left">Add another product</div>-->
+                <!--</div>-->
+                <div class="re-total">
+                    <div class="row">
+                        <div class="col-xs-9 bold-text">
+                            Total Value at Retirement
+                        </div>
+                        <div class="col-xs-3 bold-text">
+                            $<span class="expected-total"></span>
+                        </div>
+                        <div class="col-xs-12 small-text bold-text">
+                            (as stated)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-confirm">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="otherAssetsModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title orange-text big-text text-center bold-text"><span>Other Assets</span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="re-value">
+                    <div class="row">
+                        <div class="col-xs-7">Expected value upon retirement</div>
+                        <div class="col-xs-2 text-center type"></div>
+                        <div class="col-xs-3 form-group inner-addon left-addon">
+                            <input type="number" value="" class="form-control expected-value">
+                            <i class="fa fa-usd" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="row margin-top-30 margin-bottom-40 cursor-pointer orange-text">-->
+                    <!--<div class="col-xs-1 property text-right">-->
+                        <!--<i class="fa fa-plus-circle" aria-hidden="true"></i>-->
+                    <!--</div>-->
+                    <!--<div class="col-xs-11 property text-left">Add another asset</div>-->
+                <!--</div>-->
+                <div class="re-total">
+                    <div class="row">
+                        <div class="col-xs-9 bold-text">
+                            Total Value at at Retirement
+                        </div>
+                        <div class="col-xs-3 bold-text">
+                            $<span class="expected-total"></span>
+                        </div>
+                        <div class="col-xs-12 small-text bold-text">
+                            (as stated)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-confirm">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="userModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title orange-text big-text text-center bold-text"><span>Edit your personal details</span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="re-value">
+                    <div class="row">
+                        <div class="col-xs-6">What is your name?</div>
+                        <div class="col-xs-6 form-group">
+                            <input type="text" value="" class="form-control name-modal">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-6">Date of Birth</div>
+                        <div class="col-xs-3 form-group inner-addon right-addon">
+                            <input type="text" value="" class="form-control datetime-picker birthday-modal">
+                            <i class="fa fa-calendar-o" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">Are you a smoker?</div>
+                        <div class="col-xs-6 form-group modal-radio">
+                            <label class="radio-inline padding-0 col-xs-4">
+                                <input type="radio" name="smoker-modal" class="smoker-modal no"><span>No</span>
+                            </label>
+                            <label class="radio-inline padding-0 margin-right-30 col-xs-4">
+                                <input type="radio" name="smoker-modal" class="smoker-modal yes"><span>Yes</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">Gender</div>
+                        <div class="col-xs-6 form-group modal-radio">
+                            <label class="radio-inline padding-0 col-xs-4">
+                                <input type="radio" name="gender-modal" class="gender-modal male"><span>Male</span>
+                            </label>
+                            <label class="radio-inline padding-0 margin-right-30 col-xs-4">
+                                <input type="radio" name="gender-modal" class="gender-modal female"><span>Female</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-confirm">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var premiumTerm = {
+        477:'Single Pay',
+        478:'Pay for 5 Years',
+        485:'Pay for 8 Years',
+        486:'Pay for 10 Years',
+        487:'Pay for 15 Years',
+        488:'Pay for 20 Years',
+        490:'Pay for 25 Years',
+        491:'Regular Pay'
+    };
+
+    var payoutDuration = {
+        480:'10 Years',
+        482:'15 Years',
+        483:'20 Years',
+        528:'30 Years',
+        492:'Till Age 80',
+        493:'Till Age 90',
+        494:'Lifetime payout'
+    };
+    var properties = [];
+    var otherAssets = [];
+    var retirementProducts = [];
+
+    var currentFundInvestment = 50;
+    var data = {
+        incomeGrowth: 4, //(0% to 6%)
+        investmentReturnRate: 2, //(0% to 8%)
+        propertyGrowthRate: 4, //(0% to 5%)
+        inflationRate: 2, //(0% to 5%)
+        assumedDowngradeRepurchaseRatio: 0.5,
+        name: '{{ user.name }}',
+        sex: '{{ user.sex }}',
+        smoker: '{{ user.smoker }}',
+        birthday: '{{ user.birthday }}',
+        age_retire: '{{user.age_retire}}',
+        age: 0,
+        lifeExpectNonSmoker: 0,
+        lifeExpectSmoker: 0,
+        retireAge: 0,
+        annualIncome: 0,
+        annualExpense: 0,
+        totalPropertyValue: 0,
+        retirementProducts: 0,
+        annualIncomeToBase: 0,
+        annualExpenseToBase: 0,
+        cashAtRetirement: 0,
+        fromPropertyDowngrade: 0,
+        retirementProductMaturity: 0,
+        saleOfOtherAssets: 0,
+        maximum: 0,
+        minimum: 0,
+        lessMonetizationSaving: 0,
+        incomeBasedApproach: 0,
+        expensesBasedApproach: 0,
+        selectedRetirementGoal: 0,
+        selectedAllocationPercent: 0,
+        liveExpectancy:0,
+        currentYear:0,
+        savings:0,
+        remainYearToRetirement:0,
+        incomeLastDrawn:70, // 50% to 100%
+        expenseLastDrawn:70, // 50% to 100%
+        insuranceEstimatedAnnualBudget:0,
+        fundEstimatedAnnualBudget:0,
+        cashSavings:0,
+        insuranceEndowmentEstimatedTotal:0,
+        fundInvestmenEstimatedTotal:0
+    };
+
+    function initUser() {
+        if (data.sex == 'Female') {
+            data.lifeExpectNonSmoker = 88;
+            data.lifeExpectSmoker = 86;
+        } else {
+            data.lifeExpectNonSmoker = 86;
+            data.lifeExpectSmoker = 82;
+        }
+
+        if (data.smoker == 'Yes') {
+            if (data.sex == 'Male') {
+                data.liveExpectancy = 82;
+            } else {
+                data.liveExpectancy = 86;
+            }
+        } else {
+            if (data.sex == 'Male') {
+                data.liveExpectancy = 86;
+            } else {
+                data.liveExpectancy = 88;
+            }
+        }
+
+        // Get current year
+        var today = new Date();
+        var birthday = data.birthday;
+        var newDate = birthday.split('/');
+        birthday = new Date(newDate[2], newDate[1], newDate[0], 0, 0, 0);
+
+        data.currentYear = today.getFullYear();
+        data.retireAge = parseFloat(data.age_retire);
+        data.age = ((today.getTime() - birthday.getTime()) / (24 * 60 * 60 * 1000)) / 365;
+        data.yearToLiveAfterRetirement = data.liveExpectancy - data.retireAge;
+        data.remainYearToRetirement = data.retireAge - data.age;
+    }
+
+    function calculateAnnualIncome(employment, other) {
+        data.annualIncomeEmployment = parseFloat(employment);
+        data.annualIncomeOther = parseFloat(other);
+        data.annualIncome =  data.annualIncomeEmployment + data.annualIncomeOther;
+
+    }
+
+    function calculateAnnualExpense(mortgage, transportation, household, dependant, incomeTax, insurance, other) {
+
+        data.annualExpenseMortgage = parseFloat(mortgage);
+        data.annualExpenseTransportation = parseFloat(transportation);
+        data.annualExpenseHousehold = parseFloat(household);
+        data.annualExpenseDependant = parseFloat(dependant);
+        data.annualExpenseIncomeTax = parseFloat(incomeTax);
+        data.annualExpenseInsurance = parseFloat(insurance);
+        data.annualExpenseOther = parseFloat(other);
+
+        data.annualExpense = (data.annualExpenseMortgage * 12) +
+                (data.annualExpenseTransportation * 12) +
+                (data.annualExpenseHousehold * 12) +
+                (data.annualExpenseDependant * 12) +
+                data.annualExpenseIncomeTax +
+                data.annualExpenseInsurance +
+                data.annualExpenseOther;
+    }
+
+    function calculateAnnualIncomeToBase(income, incomeGrowth, remainYears, lastDrawn) {
+        data.annualIncomeToBase = (income * Math.pow((1+incomeGrowth), remainYears)) * (lastDrawn/100);
+    }
+
+    function calculateAnnualExpenseToBase(expense, inflationRate, remainYear, lastDrawn) {
+        data.annualExpenseToBase = (expense * Math.pow((1+inflationRate), remainYear)) * (lastDrawn/100);
+    }
+
+    function calculateSavings(cash, remainYear, investmentRate) {
+        data.cashSavings = parseFloat(cash);
+        var cashAtRetirement = cash * Math.pow(1.03, remainYear);
+        var totalSaving = cashAtRetirement;
+        data.savings = totalSaving;
+        data.cashAtRetirement = cashAtRetirement;
+    }
+
+    function calculateProperty(properties) {
+        var totalProperty = 0;
+        var totalLoanAmount = 0;
+        var totalMonthlyLoanPayment = 0;
+
+        $(properties).each(function(index, record) {
+            totalProperty += record.price * Math.pow((1 + (data.propertyGrowthRate/100)), (data.retireAge - record.purchaseAge));
+            totalLoanAmount += record.loan;
+            totalMonthlyLoanPayment += record.monthlyPayMent;
+        });
+
+        data.totalPropertyValue = totalProperty;
+        data.totalLoanAmount = totalLoanAmount;
+        data.totalMonthlyLoanPayment = totalMonthlyLoanPayment;
+
+        data.loanOutstandingAtRetirement = -(data.totalLoanAmount - (data.totalMonthlyLoanPayment * data.remainYearToRetirement * 12));
+
+        data.fromPropertyDowngrade = data.totalPropertyValue * (1 - data.assumedDowngradeRepurchaseRatio) - data.loanOutstandingAtRetirement;
+    }
+
+    function calculateRetirementProducts(products) {
+        var totalRetirementProducts = 0;
+        $(products).each(function(index, record) {
+            totalRetirementProducts += record.amount;
+        });
+        data.totalRetirementProducts = totalRetirementProducts;
+    }
+
+    function calculateOtherAssets(assets) {
+        var totalOtherAssets = 0;
+        $(assets).each(function(index, record) {
+            totalOtherAssets += record;
+        });
+        data.totalOtherAssets = totalOtherAssets;
+    }
+
+    $(document).ready(function () {
+
+        initUser();
+        //  Step 1
+        $('#employment-income').focusout(function () {
+            sumAnnualIncome();
+            $('#annual-income').val(numberWithCommas(data.annualIncome));
+        });
+        $('#other-income').focusout(function () {
+            sumAnnualIncome();
+            $('#annual-income').val(numberWithCommas(data.annualIncome));
+        });
+
+        $('.monthly-expense').focusout(function () {
+            sumAnnualExpense();
+            $('#annual-expense').val(numberWithCommas(data.annualExpense));
+        });
+
+        $('.annual-expense').focusout(function () {
+            sumAnnualExpense();
+            $('#annual-expense').val(numberWithCommas(data.annualExpense));
+        });
+
+        $('#btn-submit').click(function (e) {
+            e.preventDefault();
+
+            sumAnnualIncome();
+            sumAnnualExpense();
+            calculateOtherThingStep1();
+
+            $('#step-1').addClass('hidden');
+            $('#step-2').removeClass('hidden');
+
+            $('html, body').animate({
+                scrollTop: $("#step-2 .header").offset().top
+            }, 300);
+        });
+
+        // Step 2
+        var propertyIndex = 1;
+        var retirementIndex = 1;
+        var otherIndex = 1;
+
+        // Add another property
+        $('#add-property').click(function () {
+            var html = '<div class="sub-property-group sub-property-group-'+ propertyIndex +'"> <div class="row"> <div class="input-wraper col-xs-12"> <div class="input-background col-xs-12 inner-addon right-addon"> <input type="text" class="text-input col-xs-10"> <i class="fa fa-caret-down icon-collapse-click col-xs-2" aria-hidden="true" data-class=".sub-property-'+ propertyIndex +'"> </i> </div> </div> </div> <div class="row margin-top-30 sub-property-'+ propertyIndex +'"> <div class="col-sm-3"> <div class="name name-3">Your age at purchase</div> <input type="number" class="col-xs-12 purchase-age"/> </div> <div class="clearfix visible-xs"></div> <div class="col-sm-3 col-sm-offset-1"> <div class="name min-width-180"> Property Type(Private, HDB etc)</div> <div class="inner-addon right-addon col-xs-12"> <select> <option value="Private">Private</option> <option value="HDB">HDB</option> <option value="Other">Other</option> </select> </div> </div> <div class="clearfix visible-xs"></div> <div class="col-sm-3 col-sm-offset-1"> <div class="name name-3">Purchase price</div> <div class="inner-addon left-addon col-xs-12"> <input type="number" class="col-xs-12 purchase-price"/> <i class="fa fa-usd" aria-hidden="true"> </i></div> </div> </div>'
+
+            +'<div class="row margin-top-10 sub-property-'+ propertyIndex +'"> <div class="col-sm-3"> <div class="name name-3 max-width-60"> Loan amount </div> <div class="inner-addon left-addon col-xs-12"> <input type="number" class="col-xs-12 loan-amount"/> <i class="fa fa-usd" aria-hidden="true"> </i> </div> </div> <div class="clearfix visible-xs"></div> <div class="col-sm-3 col-sm-offset-1"> <div class="name min-width-180 name-3"> Monthly Loan Payment </div> <div class="inner-addon left-addon col-xs-12"> <input type="number" class="col-xs-12 monthly-loan-payment"/> <i class="fa fa-usd" aria-hidden="true"> </i> </div> </div> <div class="clearfix visible-xs"></div> <div class="col-sm-3 col-sm-offset-1"> <div class="name name-3"> Mortgage Interest Rate </div> <div class="inner-addon right-addon col-xs-12"> <input type="number" class="col-xs-12"/> <i class="fa fa-percent" aria-hidden="true"> </i> </div> </div> </div>'
+
+            +' <div class="row margin-top-30 sub-property-'+ propertyIndex +'"> <div class="col-sm-6 downgrading"> Consider downgrading property for retirement? </div> <div class="col-sm-6 downgrading-radio"> <label class="radio-inline padding-0"> <input type="radio" name="downgrade-'+ propertyIndex +'" class="downgrade-option radio-no" checked=""><span>No</span> </label> <label class="radio-inline padding-0 margin-right-30"> <input type="radio" name="downgrade-'+ propertyIndex +'" class="downgrade-option radio-yes"><span>Yes</span> </label> </div> <div class="col-sm-6 downgrading-dropdown" style="display: none;"> <ul> <li class="downgrading-dropdown-option">3 Room HDB</li> <li class="downgrading-dropdown-option">4 Room HDB</li> <li class="downgrading-dropdown-option">5 Room HDB</li> <li class="downgrading-dropdown-option">Studio</li> <li class="downgrading-dropdown-option">Others</li> <li class="downgrading-dropdown-option cancel">Cancel</li> </ul> </div> <div class="col-sm-6 downgrading-result downgrading-x" style="display: none;"> <span class="downgrading-selected"></span> <i class="fa fa-times-circle-o downgrading-cancel" aria-hidden="true"></i> </div> </div>';
+
+            $('.sub-property-container').append(html);
+            propertyIndex++;
+        });
+
+        // Add another retirement
+        $('#add-retirement').click(function () {
+            var html = '<div class="sub-retirement-group-'+ retirementIndex +'"> <div class="row"> <div class="input-wraper col-xs-12"> <div class="input-background col-xs-12 inner-addon right-addon"> <input type="text" class="text-input col-xs-10"> <i class="fa fa-caret-down col-xs-2 icon-collapse-click" aria-hidden="true" data-class=".sub-retirement-'+ retirementIndex +'"> </i> </div> </div> </div> <div class="row margin-top-30 sub-retirement-'+ retirementIndex +'"> <div class="col-sm-4"> <div class="name"> Maturity date </div>'
+
+            +'<div class="input-group date datetime-picker maturity-date inner-addon right-addon col-xs-12"> <input type="text" class="col-md-12 input-group-addon maturity"/> <i class="fa fa-calendar-o"> </i> </div> </div> <div class="col-sm-3 col-sm-offset-1"> <div class="name min-width-180 sm-min-width-200"> Maturity Amount </div> <!--here--> <div class="inner-addon left-addon col-xs-12"> <input type="number" class="col-xs-12 maturity-amount"/> <i class="fa fa-usd" aria-hidden="true"> </i> </div> </div> </div> </div> ';
+
+            $('.sub-retirement-container').append(html);
+
+            $('.datetime-picker').each(function(){
+                var r_min = $(this).attr('data-range-min');
+                var r_max = $(this).attr('data-range-max');
+                if ((typeof r_min !== typeof undefined && r_min !== false)&&(typeof r_max !== typeof undefined && r_max !== false)) {
+                    var d = new Date();
+                    var maxYear=d.getFullYear()-r_min;
+                    var minYear=d.getFullYear()-r_max;
+                    $(this).datetimepicker({
+                        format: 'DD/MM/YYYY',
+                        minDate:'1/1/'+minYear,
+                        maxDate:'12/31/'+maxYear,
+                        useStrict:true
+                    });
+                }else
+                {
+                    $(this).datetimepicker({
+                        format: 'DD/MM/YYYY'
+                    });
+                }
+            });
+            retirementIndex++;
+        });
+
+        // Add another asset
+        $('#add-other').click(function () {
+            var html = '<div class="sub-other-group-'+ otherIndex +'"> <div class="row"> <div class="input-wraper col-xs-12"> <div class="input-background col-xs-12 inner-addon right-addon"> <input type="text" class="text-input col-xs-10"> <i class="fa fa-caret-down icon-collapse-click col-xs-2" aria-hidden="true" data-class=".sub-other-'+ otherIndex +'"> </i> </div> </div> </div> <div class="row margin-top-30 sub-other-'+ otherIndex +'"> <div class="name col-xs-12">Expected value upon Retirement</div> <div class="col-sm-3"> <div class="inner-addon left-addon col-xs-12"> <input type="number" class="col-xs-12 other-asset"/> <i class="fa fa-usd" aria-hidden="true"> </i> </div> </div> </div> </div>';
+
+            $('.sub-other-container').append(html);
+            otherIndex++;
+        });
+
+        $('#btn-magic').click(function (e) {
+            // Property
+
+            properties = [];
+
+            for (var i = 0; i < propertyIndex; i++) {
+                var purchasePrice = $('.sub-property-group-' + i + ' .purchase-price').val();
+                var purchaseAge = $('.sub-property-group-' + i + ' .purchase-age').val();
+                var loanAmount = $('.sub-property-group-' + i + ' .loan-amount').val();
+                var monthlyLoanPayMent = $('.sub-property-group-' + i + ' .monthly-loan-payment').val();
+                var propertyType = $('.sub-property-group-' + i + ' .property-type').val();
+                var mortgageRate = $('.sub-property-group-' + i + ' .mortgage-rate').val();
+
+                if (purchaseAge == '') {
+                    purchaseAge = 0;
+                }
+
+                if (purchasePrice == '') {
+                    purchasePrice = 0;
+                }
+
+                if (loanAmount == '') {
+                    loanAmount = 0;
+                }
+
+                if (monthlyLoanPayMent == '') {
+                    monthlyLoanPayMent = 0;
+                }
+
+                if(mortgageRate == '') {
+                    mortgageRate = 0;
+                }
+
+                properties.push({
+                    price:parseFloat(purchasePrice),
+                    purchaseAge: parseFloat(purchaseAge),
+                    loan: parseFloat(loanAmount),
+                    monthlyPayMent: parseFloat(monthlyLoanPayMent),
+                    propertyType:propertyType,
+                    mortgageRate:parseFloat(mortgageRate)
+                });
+            }
+
+            calculateProperty(properties);
+
+            // Retirement Products
+            retirementProducts = [];
+            for (var i = 0; i < retirementIndex; i++) {
+
+                var retirementProductDate = $('.sub-retirement-group-' + i + ' .maturity').val();
+                var retirementProduct = $('.sub-retirement-group-' + i + ' .maturity-amount').val();
+
+                if (retirementProduct == '') {
+                    retirementProduct = 0;
+                }
+
+                retirementProducts.push({
+                    date:retirementProductDate,
+                    amount:parseFloat(retirementProduct)
+                });
+
+            }
+
+            calculateRetirementProducts(retirementProducts);
+
+            // Total other assets
+            otherAssets = [];
+            for (var i = 0; i < otherIndex; i++) {
+                var value = $('.sub-other-group-' + i + ' .other-asset').val();
+                if (value == '') {
+                    value = 0;
+                }
+
+                otherAssets.push(parseFloat(value));
+            }
+
+            calculateOtherAssets(otherAssets);
+            // Saving at retirement
+            // Cash in Bank
+            var cash = $('#cash').val();
+            if (cash == '') {
+                cash = 0;
+            }
+
+            calculateSavings(cash, data.remainYearToRetirement, data.investmentReturnRate);
+
+            initResult();
+            initSlider();
+            $('#step-2').addClass('hidden');
+            $('#result-retirement').removeClass('hidden');
+
+            $('html, body').animate({
+                scrollTop: $("#result-retirement .part-1").offset().top
+            }, 300);
+        });
+
+        $('#find-solutions').click(function () {
+            $('.compare-list tbody').html('');
+            // Prepare data
+            var cat = 3; // For retirement
+            //var gender = data.sex=='Female'?356:357;
+            var gender = data.sex=='Female'?'f':'m';
+            var smoker = data.smoker=='Yes'?475:474;
+
+
+            var age = 314; // 30; 20 -> 70 = 304 -> 355
+            data.age = Math.round(data.age);
+            if(data.age < 20) {
+                data.age = 20;
+            } else if(data.age > 70) {
+                data.age = 70;
+            }
+            // age = data.age + 284;
+            age = data.age;
+
+            var montly_retire_income;
+            data.montlyRetireIncome = data.insuranceEndowmentEstimatedTotal / data.yearToLiveAfterRetirement / 12;
+
+
+            if(data.montlyRetireIncome < 500) {
+                data.montlyRetireIncome = 500;
+            } else if(data.montlyRetireIncome > 10000) {
+                data.montlyRetireIncome = 10000;
+            }
+			console.log('Wizard: actual data.montlyRetireIncome=' + data.montlyRetireIncome);
+
+            data.montlyRetireIncome = roundStep(data.montlyRetireIncome, 1000, 1000);
+
+			console.log('Wizard: rounded data.montlyRetireIncome=' + data.montlyRetireIncome);
+
+
+			/*
+            if(data.montlyRetireIncome == 500) {
+                montly_retire_income = 467;
+            } else if(data.montlyRetireIncome == 1000) {
+                montly_retire_income = 472;
+            } else {
+                montly_retire_income = ((data.montlyRetireIncome - 1500) / 500) + 507;
+            }
+			*/
+
+
+			montly_retire_income = data.montlyRetireIncome;
+
+            var payout_age;
+            if(data.retireAge < 35) {
+                data.retireAge = 35;
+            } else if(data.retireAge > 75) {
+                data.retireAge = 75;
+            }
+
+			console.log('Wizard: actual data.retireAge=' + data.retireAge);
+
+            data.retireAge = roundStep(parseInt(data.retireAge), 5, 5);
+			console.log('Wizard: rounded data.retireAge=' + data.retireAge);
+
+			payout_age = data.retireAge;
+
+			/*
+
+            switch(parseInt(data.retireAge)) {
+                case 35:
+                    payout_age = 526;
+                    break;
+                case 40:
+                    payout_age = 527;
+                    break;
+                case 45:
+                    payout_age = 441;
+                    break;
+                case 50:
+                    payout_age = 446;
+                    break;
+                case 55:
+                    payout_age = 451;
+                    break;
+                case 60:
+                    payout_age = 456;
+                    break;
+                case 63:
+                    payout_age = 459;
+                    break;
+                case 65:
+                    payout_age = 461;
+                    break;
+                case 70:
+                    payout_age = 466;
+                    break;
+                case 75:
+                    payout_age = 525;
+                    break;
+            }
+
+			*/
+
+            var premium_term = 491; // 491 = Regular pay
+            var payout_duration = 483; // 483 = 20 Years
+
+			console.log('Wizard: data.smoker=' + data.smoker);
+            console.log('Wizard: data.liveExpectancy=' + data.liveExpectancy);
+
+			// auguried - 20170405 - additional functions
+			var payout_duration_cal = data.liveExpectancy - data.retireAge;
+			console.log('Wizard: payout_duration_cal=' + payout_duration_cal);
+
+			if (payout_duration_cal > 30) 
+				payout_duration_cal = 99
+			else {
+				payout_duration_cal = roundStep(parseInt(payout_duration_cal), 10, 10);
+			}
+			console.log('Wizard: rounded payout_duration_cal=' + payout_duration_cal);
+			payout_duration = payout_duration_cal;
+
+			
+
+            var submitData = {
+                radio_plan_category: cat,
+                radio_gender: gender,
+                radio_smoker: smoker,
+                age: age,
+                montly_retire_income: montly_retire_income,
+                payout_age: payout_age,
+
+            };
+          console.log(submitData);
+            $.ajax({
+                url: "/getrecommendation/",
+                method: "GET",
+                dataType: "json",
+                data: submitData,
+                success: function (data) {
+                    var index = [];
+                    console.log('RESULTS');
+                    console.log(data);
+                    if(data.length > 0) {
+                        for (index = 0; index < data.length; ++index) {
+                            var price = data[index].get_price_per_item[0];
+                            if(data[index].get_price_option_1_per_item != null) {
+                                price = price + data[index].get_price_option_1_per_item[0];
+                            }
+
+                            if(data[index].get_price_option_2_per_item != null) {
+                                price = price + data[index].get_price_option_2_per_item[0];
+                            }
+
+                            var term = premiumTerm[data[index].attributes[14]];
+                            var duration = payoutDuration[data[index].attributes[15]];
+
+                            var row = '<tr><td class="col-2"><div class="panel"><div class="display-table"> <div class="col-1"><a class="drop-icon collapsed" data-toggle="collapse" href="#collapse_' + data[index].id + '" aria-expanded="false">' + data[index].name + '</a></div> <div class="col-2">' + data[index].usp1 + '</div> <div class="col-3">' + data[index].usp2 + '</div> <div class="col-4">' + data[index].usp3 + '</div> <div class="col-5"> <div class="price m-bot-5">'+data[index].get_price_per_item[2]+'&nbsp;$' + numberWithCommas(price) + '</div> <button id="button_' + data[index].id + '" class="btn btn-primary font-bold">Add to Cart </button><br/><br/>'+term+'<br/>Duration: '+duration+' </div> </div> <div id="collapse_' + data[index].id + '" class="panel-collapse collapse" aria-expanded="false"> <div class="panel-body"> <p>' + data[index].description + '</p> <a href="' + data[index].url + '" class="btn btn-default">Details</a> </div> </div> </div> </td></tr>';
+
+                            $('.compare-list tbody').append(row);
+                        }
+
+                        $('.total-result-value').html(data.length);
+                    } else {
+                        var blank = '<tr><td class="col-2"> <div class="panel"> <div class="display-table"> <div class="col-1">There are no matching results</div> </div> </div> </td> </tr>';
+
+                        $('.compare-list tbody').html(blank);
+                        $('.total-result-value').html(0);
+                    }
+
+                    $('.recommendation').show();
+                }
+            });
+        });
+
+        $('.re-value').on('keypress keyup focusout', 'input', function() {
+            calculateModalData(this, false);
+        });
+
+        $('.re-total').on('change', 'select', function() {
+            calculateModalData(this, false);
+        });
+
+        $('.modal').on('hidden.bs.modal', function () {
+            populateModalValues();
+        })
+
+        $('.modal').on('click', '.btn-confirm', function () {
+            calculateModalData(this, true);
+            initUser();
+            calculateOtherThingStep1();
+            initResult();
+            initSlider();
+            $(this).parents('.modal').modal('hide');
+        });
+
+
+        // Visual
+        $('body').on('click', '.back-step-1', function (e) {
+            e.preventDefault();
+            $('#step-1').removeClass('hidden');
+            $('#step-2').addClass('hidden');
+        });
+
+        $('.sub-container').on('click', '.icon-collapse-click', function () {
+            var taget = $(this).data('class');
+
+            if ($(taget).hasClass('hidden')) {
+                $(this).removeClass('fa-caret-left').addClass('fa-caret-down');
+                $(taget).removeClass('hidden');
+            } else {
+                $(this).removeClass('fa-caret-down').addClass('fa-caret-left');
+                $(taget).addClass('hidden');
+            }
+        });
+
+        $('.collapse-icon-click').click(function () {
+            var taget = $(this).data('collapse');
+
+            if ($(taget).hasClass('hidden')) {
+                $(this).removeClass('fa-caret-left').addClass('fa-caret-down');
+                $(taget).removeClass('hidden');
+            } else {
+                $(this).removeClass('fa-caret-down').addClass('fa-caret-left');
+                $(taget).addClass('hidden');
+            }
+        });
+
+        $('.need-part').on('click', '.hide-breakout-btn', function () {
+            $('.need-part .need-line, .need-part .grey-bg, .need-part .hide-breakout-btn').hide();
+            $('.need-part .show-breakout-btn, .need-part .orange-line').show();
+        });
+
+        $('.need-part').on('click', '.show-breakout-btn', function () {
+            $('.need-part .need-line, .need-part .grey-bg, .need-part .hide-breakout-btn').show();
+            $('.need-part .show-breakout-btn, .need-part .orange-line').hide();
+        });
+
+        $('.less-part').on('click', '.hide-caret', function () {
+            $('.less-part .hide-caret, .less-part .grey-bg').hide();
+            $('.less-part .show-caret').show();
+        });
+
+        $('.less-part').on('click', '.show-caret', function () {
+            $('.less-part .hide-caret, .less-part .grey-bg').show();
+            $('.less-part .show-caret').hide();
+        });
+
+        $('.fulfill-part').on('click', '.hide-breakout-btn', function () {
+            $('.fulfill-part .need-line, .fulfill-part .grey-bg, .fulfill-part .message, .fulfill-part .hide-breakout-btn').hide();
+            $('.fulfill-part .show-breakout-btn, .fulfill-part .orange-line').show();
+        });
+
+        $('.fulfill-part').on('click', '.show-breakout-btn', function () {
+            $('.fulfill-part .need-line, .fulfill-part .grey-bg, .fulfill-part .message, .fulfill-part .hide-breakout-btn').show();
+            $('.fulfill-part .show-breakout-btn, .fulfill-part .orange-line').hide();
+        });
+
+        $('.sub-property-container').on('click', '.radio-yes', function() {
+            $(this).parent().parent().hide();
+            $(this).parent().parent().parent().find('.downgrading-dropdown').show();
+        });
+
+        $('.sub-property-container').on('click', '.downgrading-dropdown-option', function() {
+            var value = $(this).html();
+            if(value == 'Cancel') {
+                $(this).parent().parent().hide();
+                $(this).parent().parent().parent().find('.downgrading-radio').show().find('.radio-no').prop("checked", true);
+            } else {
+                $(this).parent().parent().hide();
+                $(this).parent().parent().parent().find('.downgrading-result').show().find('.downgrading-selected').html(value);
+            }
+        });
+
+        $('.sub-property-container').on('click', '.downgrading-cancel', function() {
+            $(this).parent().hide();
+            $(this).parent().parent().find('.downgrading-radio').show().find('.radio-no').prop("checked", true);
+        });
+
+        $('#top-link-block').click(function () {
+            $("html, body").animate({scrollTop: 0}, '500');
+        });
+    });
+
+    function sumAnnualIncome() {
+        var otherIncome = $('#other-income').val();
+        var employmentIncome = $('#employment-income').val();
+
+        if (otherIncome == '') {
+            otherIncome = 0;
+        }
+
+        if (employmentIncome == '') {
+            employmentIncome = 0;
+        }
+
+        return calculateAnnualIncome(employmentIncome, otherIncome);
+    }
+
+    function sumAnnualExpense() {
+        var rentMonthly = $('#rent-monthly').val();
+        var transportationMonthly = $('#transportation-monthly').val();
+        var householdMonthly = $('#household-monthly').val();
+        var dependantsMonthly = $('#dependants-monthly').val();
+        var tax = $('#tax-annual').val();
+        var insurance = $('#insurance-annual').val();
+        var other = $('#other-annual').val();
+
+        if (rentMonthly == '') {
+            rentMonthly = 0;
+        }
+
+        if (transportationMonthly == '') {
+            transportationMonthly = 0;
+        }
+
+        if (householdMonthly == '') {
+            householdMonthly = 0;
+        }
+
+        if (dependantsMonthly == '') {
+            dependantsMonthly = 0;
+        }
+
+        if (tax == '') {
+            tax = 0;
+        }
+
+        if (insurance == '') {
+            insurance = 0;
+        }
+
+        if (other == '') {
+            other = 0;
+        }
+
+        return calculateAnnualExpense(rentMonthly, transportationMonthly, householdMonthly, dependantsMonthly, tax, insurance, other);
+    }
+
+    function populateModalValues() {
+
+        var userModal = $('#userModal');
+        userModal.find('.name-modal').val(data.name);
+        userModal.find('.birthday-modal').val(data.birthday);
+        userModal.find('.smoker-modal.no').prop("checked", true)
+        userModal.find('.gender-modal.male').prop("checked", true)
+
+        if(data.smoker == 'Yes') {
+            userModal.find('.smoker-modal.yes').prop("checked", true);
+        }
+        if(data.sex == 'Female') {
+            userModal.find('.gender-modal.female').prop("checked", true);
+        }
+
+        var annualIncomeModal = $('#annualIncomeModal');
+        annualIncomeModal.find('.employment').val(data.annualIncomeEmployment);
+        annualIncomeModal.find('.others').val(data.annualIncomeOther);
+        annualIncomeModal.find('.current-total').html(numberWithCommas(data.annualIncome));
+        annualIncomeModal.find('.income-rate').val(data.incomeGrowth);
+        annualIncomeModal.find('.retirement-total').html(numberWithCommas(data.annualIncome * Math.pow((1+(data.incomeGrowth/100)), data.remainYearToRetirement)));
+
+        annualIncomeModal.find('.last-draw').val(data.incomeLastDrawn);
+
+        var annualExpensesModal = $('#annualExpensesModal');
+        annualExpensesModal.find('.mortgage').val(data.annualExpenseMortgage);
+        annualExpensesModal.find('.transportation').val(data.annualExpenseTransportation);
+        annualExpensesModal.find('.household').val(data.annualExpenseHousehold);
+        annualExpensesModal.find('.dependants').val(data.annualExpenseDependant);
+        annualExpensesModal.find('.tax').val(data.annualExpenseIncomeTax);
+        annualExpensesModal.find('.insurance').val(data.annualExpenseInsurance);
+        annualExpensesModal.find('.other').val(data.annualExpenseOther);
+        annualExpensesModal.find('.current-total').html(numberWithCommas(data.annualExpense));
+        annualExpensesModal.find('.inflation-rate').val(data.inflationRate);
+        annualExpensesModal.find('.retirement-total').html(numberWithCommas(data.annualExpense * Math.pow((1+(data.inflationRate/100)), data.remainYearToRetirement)));
+        annualExpensesModal.find('.last-draw').val(data.expenseLastDrawn);
+
+        var cashSavingModal = $('#cashSavingModal');
+        cashSavingModal.find('.cash').val(data.cashSavings);
+        cashSavingModal.find('.current-total').html(numberWithCommas(data.cashSavings));
+        cashSavingModal.find('.investment-rate').val(data.investmentReturnRate);
+        cashSavingModal.find('.retirement-total').html(numberWithCommas(data.savings));
+
+        var firstProperty = properties[0];
+        var totalPropertyModal = $('#totalPropertyModal');
+        totalPropertyModal.find('.age-purchase').val(firstProperty.purchaseAge);
+        totalPropertyModal.find('.property-type').val(firstProperty.propertyType);
+        totalPropertyModal.find('.purchase-price').val(firstProperty.price);
+        totalPropertyModal.find('.loan').val(firstProperty.loan);
+        totalPropertyModal.find('.monthly-payment').val(firstProperty.monthlyPayMent);
+        totalPropertyModal.find('.mortgage-rate').val(firstProperty.mortgageRate);
+        totalPropertyModal.find('.property-rate').val(data.propertyGrowthRate);
+        totalPropertyModal.find('.retirement-total').html(numberWithCommas(data.totalPropertyValue));
+
+        var firstProduct = retirementProducts[0];
+        var retirementProductsModal = $('#retirementProductsModal');
+        retirementProductsModal.find('.maturity-date').val(firstProduct.date);
+        retirementProductsModal.find('.maturity-ammount').val(firstProduct.amount);
+        retirementProductsModal.find('.expected-total').html(numberWithCommas(data.totalRetirementProducts));
+
+        var firstAsset = otherAssets[0];
+        var otherAssetsModal = $('#otherAssetsModal');
+        otherAssetsModal.find('.expected-value').val(firstAsset);
+        otherAssetsModal.find('.expected-total').html(numberWithCommas(data.totalOtherAssets));
+    }
+
+    function calculateModalData(element, confirm) {
+        var modal = $(element).parents('.modal');
+        var modalId = modal.attr('id');
+        var currentTotal = 0;
+        var expectedTotal = 0;
+        var retirementTotal = 0;
+        switch (modalId) {
+            case 'userModal':
+                data.name = modal.find('.name-modal').val();
+                data.birthday = modal.find('.birthday-modal').val();
+                data.smoker = modal.find('.smoker-modal.no').is(':checked')?'No':'Yes';
+                data.sex = modal.find('.gender-modal.male').is(':checked')?'Male':'Female';
+
+                break;
+            case 'annualIncomeModal':
+                var employment = modal.find('.employment').val();
+                var other = modal.find('.others').val();
+                var incomeRate = modal.find('.income-rate').val();
+
+                employment = employment == ''?0:parseFloat(employment);
+                other = other == ''?0:parseFloat(other);
+                incomeRate = incomeRate==''?4:parseInt(incomeRate);
+
+                currentTotal = employment + other;
+                retirementTotal = currentTotal * Math.pow((1+(incomeRate/100)), data.remainYearToRetirement);
+
+                if(confirm) {
+                    var lastDrawn = modal.find('.last-draw').val();
+                    data.incomeLastDrawn = lastDrawn==''?70:parseInt(lastDrawn);
+                    data.incomeGrowth = incomeRate;
+                    calculateAnnualIncome(employment, other);
+                    calculateAnnualIncomeToBase(data.annualIncome, (data.incomeGrowth/100), data.remainYearToRetirement, data.incomeLastDrawn);
+                }
+                break;
+            case 'annualExpensesModal':
+                var mortgage = modal.find('.mortgage').val();
+                var transportation = modal.find('.transportation').val();
+                var household = modal.find('.household').val();
+                var dependant = modal.find('.dependants').val();
+                var incomeTax = modal.find('.tax').val();
+                var insurance = modal.find('.insurance').val();
+                var other = modal.find('.other').val();
+                var inflationRate = modal.find('.inflation-rate').val();
+
+                mortgage = mortgage == ''?0:parseFloat(mortgage);
+                transportation = transportation == ''?0:parseFloat(transportation);
+                household = household == ''?0:parseFloat(household);
+                dependant = dependant == ''?0:parseFloat(dependant);
+                incomeTax = incomeTax == ''?0:parseFloat(incomeTax);
+                insurance = insurance == ''?0:parseFloat(insurance);
+                other = other == ''?0:parseFloat(other);
+                inflationRate = inflationRate==''?2:parseInt(inflationRate);
+
+                currentTotal = (mortgage * 12) + (transportation * 12) + (household * 12) + (dependant * 12) + incomeTax + insurance + other;
+                retirementTotal = currentTotal * Math.pow((1+(inflationRate/100)), data.remainYearToRetirement);
+
+                if(confirm) {
+                    var lastDrawn = modal.find('.last-draw').val();
+                    data.expenseLastDrawn = lastDrawn==''?70:parseInt(lastDrawn);
+                    data.inflationRate = inflationRate;
+                    calculateAnnualExpense(mortgage, transportation, household, dependant, incomeTax, insurance, other);
+                    calculateAnnualExpenseToBase(data.annualExpense, (data.inflationRate/100), data.remainYearToRetirement, data.expenseLastDrawn);
+                }
+                break;
+            case 'cashSavingModal':
+                var cash = modal.find('.cash').val();
+                var investmentRate = modal.find('.investment-rate').val();
+
+                cash = cash == ''?0:parseFloat(cash);
+                investmentRate = investmentRate==''?2:parseInt(investmentRate);
+
+                currentTotal = cash;
+                var annualPer12 = 0;
+                if(data.annualIncome > 72000) {
+                    annualPer12 = 6000;
+                } else {
+                    annualPer12 = data.annualIncome / 12;
+                }
+
+                var currentNettIncomeLessCPF = data.annualIncome - annualPer12 * 0.37 * 12;
+
+                var cashSavingsPerYear = currentNettIncomeLessCPF - data.annualExpense;
+
+                var cashAtRetirement = fv((investmentRate/100), data.remainYearToRetirement, -cashSavingsPerYear, -cash);
+
+                retirementTotal = cashAtRetirement;
+                retirementTotal = retirementTotal > 0 ? retirementTotal : 0;
+
+                if(confirm) {
+                    data.investmentReturnRate = investmentRate;
+                    calculateSavings(cash, data.remainYearToRetirement, data.investmentReturnRate);
+                }
+                break;
+            case 'totalPropertyModal':
+                var agePurchase = modal.find('.age-purchase').val();
+                var propertyType = modal.find('.property-type').val();
+                var purchasePrice = modal.find('.purchase-price').val();
+                var loan = modal.find('.loan').val();
+                var monthlyPayment = modal.find('.monthly-payment').val();
+                var mortgageRate = modal.find('.mortgage-rate').val();
+                var propertyRate = modal.find('.property-rate').val();
+
+                agePurchase = agePurchase == ''?0:parseFloat(agePurchase);
+                purchasePrice = purchasePrice == ''?0:parseFloat(purchasePrice);
+                loan = loan == ''?0:parseFloat(loan);
+                monthlyPayment = monthlyPayment == ''?0:parseFloat(monthlyPayment);
+                mortgageRate = mortgageRate == ''?0:parseFloat(mortgageRate);
+                propertyRate = propertyRate==''?4:parseInt(propertyRate);
+
+                retirementTotal = purchasePrice * Math.pow((1 + (propertyRate/100)), (data.retireAge - agePurchase));
+
+                if(confirm) {
+                    data.propertyGrowthRate = propertyRate;
+                    properties = [];
+                    properties.push({
+                        price: parseFloat(purchasePrice),
+                        purchaseAge: parseFloat(agePurchase),
+                        loan: parseFloat(loan),
+                        monthlyPayMent: parseFloat(monthlyPayment),
+                        propertyType: propertyType,
+                        mortgageRate: parseFloat(mortgageRate)
+                    });
+                    calculateProperty(properties);
+                }
+                break;
+
+            case 'retirementProductsModal':
+                var maturityDate = modal.find('.maturity-date').val();
+                var maturityAmmount = modal.find('.maturity-ammount').val();
+
+                maturityAmmount = maturityAmmount == ''?0:parseFloat(maturityAmmount);
+
+                expectedTotal = maturityAmmount;
+
+                if(confirm) {
+                    retirementProducts = [];
+                    retirementProducts.push({
+                        date:maturityDate,
+                        amount: parseFloat(maturityAmmount)
+                    });
+                    calculateRetirementProducts(retirementProducts);
+                }
+                break;
+
+            case 'otherAssetsModal':
+                var value = modal.find('.expected-value').val();
+
+                value = value == ''?0:parseFloat(value);
+
+                expectedTotal = value;
+
+                if(confirm) {
+                    otherAssets = [];
+                    otherAssets.push(parseFloat(value));
+                    calculateOtherAssets(otherAssets);
+                }
+                break;
+        }
+
+
+        modal.find('.current-total').html(numberWithCommas(currentTotal));
+        modal.find('.expected-total').html(numberWithCommas(expectedTotal));
+        modal.find('.retirement-total').html(numberWithCommas(retirementTotal));
+    }
+
+    function calculateOtherThingStep1() {
+        calculateAnnualIncomeToBase(data.annualIncome, (data.incomeGrowth/100), data.remainYearToRetirement, data.incomeLastDrawn);
+
+        calculateAnnualExpenseToBase(data.annualExpense, (data.inflationRate/100), data.remainYearToRetirement, data.expenseLastDrawn);
+    }
+
+    function initResult() {
+        var smoker = 'Non-smoker';
+        if (data.smoker == 'Yes') {
+            smoker = 'Smoker';
+        }
+
+        $('.init-name').html(data.name);
+        $('.init-age').html(Math.round(data.age));
+        $('.init-sex').html(data.sex);
+        $('.init-smoker').html(smoker);
+        $('.init-life-expect-non-smoker').html(data.lifeExpectNonSmoker);
+        $('.init-life-expect-smoker').html(data.lifeExpectSmoker);
+        $('.annual-expenditure').html(numberWithCommas(data.annualExpenseToBase));
+        $('.annual-income-to-base').html(numberWithCommas(data.annualIncomeToBase));
+        $('.retirement-age').html(data.yearToLiveAfterRetirement);
+        $('.retirement-at-age').html(data.retireAge);
+
+        $('.assumption-income-rate').html(data.incomeGrowth);
+        $('.assumption-investment-rate').html(data.investmentReturnRate);
+        $('.assumption-property-rate').html(data.propertyGrowthRate);
+        $('.assumption-inflation-rate').html(data.inflationRate);
+
+        $('.result-annual-income').val(numberWithCommas(data.annualIncomeToBase / (data.incomeLastDrawn/100))).attr('disabled', 'disabled');
+        $('.result-annual-expenses').val(numberWithCommas(data.annualExpenseToBase / (data.expenseLastDrawn/100))).attr('disabled', 'disabled');
+        $('.result-cashsaving').val(numberWithCommas(data.savings)).attr('disabled', 'disabled');
+        $('.result-total-property-value').val(numberWithCommas(data.totalPropertyValue)).attr('disabled', 'disabled');
+        $('.result-retirement-products').val(numberWithCommas(data.totalRetirementProducts)).attr('disabled', 'disabled');
+        $('.result-other-assets').val(numberWithCommas(data.totalOtherAssets)).attr('disabled', 'disabled');
+        populateModalValues();
+
+        data.incomeBasedApproach = data.annualIncomeToBase * data.yearToLiveAfterRetirement;
+        data.expensesBasedApproach = data.annualExpenseToBase * data.yearToLiveAfterRetirement;
+
+        $('.income-based-approach').html(numberWithCommas(data.incomeBasedApproach));
+        $('.expenses-based-approach').html(numberWithCommas(data.expensesBasedApproach));
+        $('.saving-at-retirement').html(numberWithCommas(data.cashAtRetirement));
+        $('.from-property-downgrade').html(numberWithCommas(data.fromPropertyDowngrade));
+        $('.retirement-product-maturity').html(numberWithCommas(data.totalRetirementProducts));
+        $('.sale-of-other-assets').html(numberWithCommas(data.totalOtherAssets));
+
+        data.lessMonetizationSaving = data.cashAtRetirement +
+                data.totalRetirementProducts +
+                data.totalOtherAssets +
+                data.fromPropertyDowngrade;
+
+        $('.less-monetization-saving').html(numberWithCommas(data.lessMonetizationSaving));
+
+        data.maximum = data.incomeBasedApproach - data.lessMonetizationSaving;
+        $('.maximum-goal-negative').html(numberWithCommas(data.maximum));
+        data.maximum = data.maximum > 0 ? data.maximum : 0;
+        $('.maximum-goal').html(numberWithCommas(data.maximum));
+
+        data.minimum = data.expensesBasedApproach - data.lessMonetizationSaving;
+        $('.minimum-goal-negative').html(numberWithCommas(data.minimum));
+        data.minimum = data.minimum > 0 ? data.minimum : 0;
+        $('.minimum-goal').html(numberWithCommas(data.minimum));
+
+        if(data.maximum <= 0) {
+            $('.maximum-note').html("Well done! We've covered the minimum for a retirement. Hence the lower/minimum has been increased.");
+        } else {
+            $('.maximum-note').html("We're still some work away from living the dream. Let's see how we can achieve it in the next step.");
+        }
+
+        if(data.minimum <= 0) {
+            $('.minimum-note').html("Well done! We've covered the minimum for a retirement. Hence the lower/minimum has been increased.");
+        } else {
+            $('.minimum-note').html("We're still some work away from living the dream. Let's see how we can achieve it in the next step.");
+        }
+
+        initSlider();
+    }
+
+    function initSlider() {
+        $('.strategy-slider-wrapper').html('<input id="strategy-slider" type="text" class="col-xs-12" data-slider-handle="custom"/>');
+        $('.allocation-slider-wrapper').html('<input id="allocation-slider" type="text" data-slider-handle="custom" data-slider-tooltip="hide"/><br/>');
+
+        max = data.maximum;
+        min = data.minimum;
+
+        $(".strategy-slider-wrapper").find('#strategy-slider').slider({
+            ticks: [
+                min,
+                min + (((max - min) * 25) / 100),
+                min + (((max - min) * 50) / 100),
+                min + (((max - min) * 75) / 100),
+                max
+            ],
+            reversed: (max < min ? true : false),
+            step: (((max - min) * 25) / 100),
+            value: min + (((max - min) * 50) / 100),
+            min: min,
+            max: max,
+            tooltip_position: 'bottom',
+            formatter: function (value) {
+                data.selectedRetirementGoal = value;
+                return '$' + numberWithCommas(Math.round(Math.abs(value)));
+            },
+            tooltip: 'always'
+        }).on("slide", function (slideEvt) {
+            data.selectedRetirementGoal = slideEvt.value;
+            changeResultSlider();
+        });
+
+        var wrapper = $('.allocation-slider-wrapper');
+        wrapper.find("#allocation-slider").slider({
+            id: "allocation-slider",
+            min: 0,
+            max: 100,
+            step: 10,
+            value: 50,
+            formatter: function (value) {
+                data.selectedAllocationPercent = value;
+                wrapper.find('.slider-selection').html('<div class="allocation-percent">50%</div>');
+                wrapper.find('.slider-track-high').html('<div class="allocation-percent">50%</div>');
+                wrapper.find('.slider-track-high').html('<div class="allocation-percent">' + (100 - data.selectedAllocationPercent) + '%</div>');
+                wrapper.find('.slider-selection').html('<div class="allocation-percent">' + data.selectedAllocationPercent + '%</div>');
+
+                var a = (data.selectedAllocationPercent * data.selectedRetirementGoal) / 100;
+                var b = ((100 - data.selectedAllocationPercent) * data.selectedRetirementGoal) / 100;
+                var c = -(pmt(3/100, data.remainYearToRetirement,0,a,0));
+                var d = -(pmt(7/100, data.remainYearToRetirement,0,b,0));
+
+                $('#insurance-endowment-estimated-total').html(numberWithCommas(a));
+                $('#fund-investment-estimated-total').html(numberWithCommas(b));
+                $('#insurance-estimated-annual-budget').html(numberWithCommas(c));
+                $('#fund-estimated-annual-budget').html(numberWithCommas(d));
+
+                data.insuranceEndowmentEstimatedTotal = a;
+                data.fundInvestmenEstimatedTotal = b;
+                data.insuranceEstimatedAnnualBudget = c;
+                data.fundEstimatedAnnualBudget = d;
+                return value;
+            },
+        }).on("slide", function (slideEvt) {
+            if (parseFloat(slideEvt.value) != parseFloat(currentFundInvestment)) {
+                wrapper.find('.slider-track-high').html('<div class="allocation-percent">' + (100 - slideEvt.value) + '%</div>');
+                wrapper.find('.slider-selection').html('<div class="allocation-percent">' + slideEvt.value + '%</div>');
+                data.selectedAllocationPercent = slideEvt.value;
+                changeResultSlider();
+            }
+        });
+    }
+
+    function changeResultSlider() {
+        var a = (data.selectedAllocationPercent * data.selectedRetirementGoal) / 100;
+        var b = ((100 - data.selectedAllocationPercent) * data.selectedRetirementGoal) / 100;
+        var c = -(pmt(3/100, data.remainYearToRetirement,0,a,0));
+        var d = -(pmt(7/100, data.remainYearToRetirement,0,b,0));
+
+        $('#insurance-endowment-estimated-total').html(numberWithCommas(a));
+        $('#fund-investment-estimated-total').html(numberWithCommas(b));
+        $('#insurance-estimated-annual-budget').html(numberWithCommas(c));
+        $('#fund-estimated-annual-budget').html(numberWithCommas(d));
+
+        data.insuranceEndowmentEstimatedTotal = a;
+        data.fundInvestmenEstimatedTotal = b;
+        data.insuranceEstimatedAnnualBudget = c;
+        data.fundEstimatedAnnualBudget = d;
+    }
+
+    // Function to calculate future value of an investment..
+    function fv(rate, nper, pmt, pv) {
+        var fv_value = 0;
+        rate = parseFloat(rate);
+        nper = parseFloat(nper);
+        pmt = parseFloat(pmt);
+        pv = parseFloat(pv);
+        if ( nper == 0 ) {
+            alert("Why do you want to test me with zeros?");
+            return(0);
+        }
+        if ( rate == 0 ) { // Interest rate is 0
+            fv_value = -(pv + (pmt * nper));
+        } else {
+            x = Math.pow(1 + rate, nper);
+            fv_value = - ( -pmt + x * pmt + rate * x * pv ) /rate;
+        }
+        fv_value = conv_number(fv_value,2);
+        return parseFloat(fv_value);
+    }
+
+    function pmt(rate, nper, pv, fv, type) {
+        if (!fv) fv = 0;
+        if (!type) type = 0;
+
+        if (rate == 0) return -(pv + fv)/nper;
+
+        var pvif = Math.pow(1 + rate, nper);
+        var pmt = rate / (pvif - 1) * -(pv * pvif + fv);
+
+        if (type == 1) {
+            pmt /= (1 + rate);
+        };
+
+        return parseFloat(pmt);
+    }
+
+    function conv_number(expr, decplaces) {
+        var str = "" + Math.round(eval(expr) * Math.pow(10,decplaces));
+        while (str.length <= decplaces) {
+            str = "0" + str;
+        }
+        var decpoint = str.length - decplaces;
+        return (str.substring(0,decpoint) + "." + str.substring(decpoint,str.length));
+    }
+
+    function numberWithCommas(x) {
+        if (x == undefined) {
+            x = 0;
+        }
+        x = Math.round(x);
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    function removeCommas(x) {
+        if(x != '') {
+            return parseFloat(x.replace(',',''));
+        }
+
+        return '';
+    }
+
+    function nthRoot(x, n) {
+        return Math.pow(x, 1/n);
+    }
+
+    function roundStep(number, increment, offset) {
+        return Math.ceil((number - offset) / increment ) * increment + offset;
+    }
+
+</script>
+{% endif %}
+{% endblock %}
